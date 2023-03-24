@@ -1,3 +1,9 @@
+<?php 
+    ini_set('display_errors', 1);
+    include_once(__DIR__ . "/bootstrap.php");
+    $allPosts = [];
+    $allPosts = Post::getPost();;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +15,17 @@
     <title>Desity - Home</title>
 </head>
 <body>
-    <?php include_once("bootstrap.php"); ?>
-    <p>test</p>
+    <?php foreach($allPosts as $post): ?>
+        <div>
+            <ul>
+                <li><?php echo $post['title']?></li>
+                <li><?php echo $post['content']?></li>
+            </ul>
+            <!-- <img src="" alt="">
+            <address>Username</address>
+            <p>content</p>
+            <address>Date</address> -->
+        </div>
+    <?php endforeach; ?>
 </body>
 </html>
