@@ -2,7 +2,7 @@
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
     $allPosts = [];
-    $allPosts = Post::getPost();;
+    $allPosts = Post::getPost();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,16 +16,20 @@
 </head>
 <body>
     <?php foreach($allPosts as $post): ?>
-        <div>
-            <ul>
-                <li><?php echo $post['title']?></li>
-                <li><?php echo $post['content']?></li>
-            </ul>
-            <!-- <img src="" alt="">
-            <address>Username</address>
-            <p>content</p>
-            <address>Date</address> -->
-        </div>
+        <?php $allPostUsers = Post::getPostUser($post['user_id']); ?>
+            <div class="feedpost">
+                <ul>
+                    <li><h1><?php echo $post['title']?></h1></li>
+                    <li><?php echo $allPostUsers[0]['firstname']. " " .$allPostUsers[0]['lastname']?></li>
+                    <li><img src="<?php echo $post['photo_url']?>" alt="post photo"></li>
+                    <li><?php echo $post['content']?></li>
+                    <li><?php echo $post['postdate']?></li>
+                </ul>
+                <!-- <img src="" alt="">
+                <address>Username</address>
+                <p>content</p>
+                <address>Date</address> -->
+            </div>
     <?php endforeach; ?>
 </body>
 </html>
