@@ -15,21 +15,24 @@
     <title>Desity - Home</title>
 </head>
 <body>
-    <?php foreach($allPosts as $post): ?>
-        <?php $allPostUsers = Post::getPostUser($post['user_id']); ?>
-            <div class="feedpost">
-                <ul>
-                    <li><h1><?php echo $post['title']?></h1></li>
-                    <li><?php echo $allPostUsers[0]['firstname']. " " .$allPostUsers[0]['lastname']?></li>
-                    <li><img src="<?php echo $post['photo_url']?>" alt="post photo"></li>
-                    <li><?php echo $post['content']?></li>
-                    <li><?php echo $post['postdate']?></li>
-                </ul>
-                <!-- <img src="" alt="">
-                <address>Username</address>
-                <p>content</p>
-                <address>Date</address> -->
-            </div>
-    <?php endforeach; ?>
+    <?php include_once(__DIR__ . "/nav.php"); ?>
+    <div class="feed">
+        <?php foreach($allPosts as $post): ?>
+            <?php $allPostUsers = Post::getPostUser($post['user_id']); ?>
+                <div class="feedpost">
+                    <ul>
+                        <li><h1><?php echo $post['title']?></h1></li>
+                        <li><?php echo $allPostUsers[0]['firstname']. " " .$allPostUsers[0]['lastname']?></li>
+                        <li><img src="<?php echo $post['photo_url']?>" alt="post photo"></li>
+                        <li><?php echo $post['content']?></li>
+                        <li><?php echo $post['postdate']?></li>
+                    </ul>
+                    <!-- <img src="" alt="">
+                    <address>Username</address>
+                    <p>content</p>
+                    <address>Date</address> -->
+                </div>
+        <?php endforeach; ?>
+    </div>
 </body>
 </html>
