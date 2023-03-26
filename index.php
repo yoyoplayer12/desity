@@ -17,6 +17,13 @@
 <body>
     <?php include_once(__DIR__ . "/nav.php"); ?>
     <div class="feed">
+        <div class="newpost">
+            <form action="" method="post">
+                <input type="text" name="title" placeholder="Title">
+                <input type="text" name="content" placeholder="Content">
+                <input type="submit" value="Post">
+            </form>
+        </div>
         <?php foreach($allPosts as $post): ?>
             <?php $allPostUsers = Post::getPostUser($post['user_id']); ?>
                 <div class="feedpost">

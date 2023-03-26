@@ -1,10 +1,10 @@
 <nav>
     <ul>
         <li><h1>CoPoll</h1></li>
-        <li><a href="#">test 1</a></li>
-        <li><a href="#">test 2</a></li>
-        <li><a href="#">test 3</a></li>
-        <li><a href="#">test 4</a></li>
-        <li><a href="login.php">Log in</a></li>
+        <li><a href="#"><h1>Test 1</h1></a></li>
+        <li><a href="#"><h1>Test 2</h1></a></li>
+        <li><a href="#"><h1>Test 3</h1></a></li>
+        <li><a href="#"><h1>Test 4</h1></a></li>
+        <li><a href="login.php"><h1>Log in</h1></a></li>
     </ul>
 </nav>
