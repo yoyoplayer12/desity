@@ -25,9 +25,7 @@
                 $host = $config['host'];
 
                 // echo "💥";
-                self::$conn = new PDO("mysql:host=$host;dbname=$database", $user, $password, array(
-                    PDO::ATTR_TIMEOUT => 1, // in seconds
-                ));
+                self::$conn = new PDO("mysql:host=$host;dbname=$database", $user, $password);
                 return self::$conn;
             }
         }
