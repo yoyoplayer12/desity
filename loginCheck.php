@@ -12,6 +12,7 @@
                 $_SESSION['firstname'] = $user['firstname'];
                 $_SESSION['lastname'] = $user['lastname'];
                 $_SESSION['place'] = $user['place'];
+                $_SESSION['email'] = $user['email'];
                 return true;
             }
             else{

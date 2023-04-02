@@ -1,24 +1,21 @@
 <?php
     include_once(__DIR__ . "/bootstrap.php");
     include_once(__DIR__ . "/loginCheck.php");
-    if($_SESSION['loggedin'] === true) {
-        header("Location: ./account.php");  
+    if (isset($_SESSION["loggedin"])) {
+        header("Location: ./account.php");
     }
-    else{
-        if(!empty($_POST)){
-            //er is gesubmit
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            if(canLogin($email, $password)){
-                $_SESSION['loggedin'] = true;
-                header("Location: ./index.php");
-            }
-            else {
-                echo "Wrong password or username";
-            }
+    if(!empty($_POST)){
+        //er is gesubmit
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        if(canLogin($email, $password)){
+            $_SESSION['loggedin'] = true;
+            header("Location: ./index.php");
         }
-      }
-   
+        else {
+            echo "Wrong password or username";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Copoll - Log in</title>
+    <title>Copol - Log in</title>
 </head>
 <body>
     <?php include_once(__DIR__ . "/nav.php"); ?>

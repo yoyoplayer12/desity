@@ -4,11 +4,12 @@
         <li><a href="index.php"><h1>Home</h1></a></li>
         <li><a href="#"><h1>Mechelen</h1></a></li>
         <li><a href="login.php"><h1><?php
-        if ($_SESSION["firstname"]==null) {
-            echo "Log in";
+        if (isset($_SESSION["firstname"])) {
+            echo $_SESSION["firstname"] . " " . $_SESSION["lastname"];
         }
         else{
-            echo $_SESSION["firstname"] . " " . $_SESSION["lastname"];
+            echo "Log in";
+            
         }
         ?></h1></a></li>
     </ul>
