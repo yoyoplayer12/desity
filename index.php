@@ -19,11 +19,11 @@
         $allPosts = [];
         $allPosts = Post::getPost();
         $fp_place = $_SESSION["place"];
-        $fp_name = $_SESSION["firstname"] . $_SESSION["lastname"];;
+        $fp_name = $_SESSION["firstname"] . " " . $_SESSION["lastname"];;
       }
-      else{
+    else{
         header("Location: ./login.php");
-      }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
