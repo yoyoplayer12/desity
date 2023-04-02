@@ -17,7 +17,7 @@
         $user->setPlace($place);
         $user->setPassword($password);
         $user->setUser();
-        header("Location: login.php")
+        header("Location: login.php");
     }
 ?>
 <!DOCTYPE html>
