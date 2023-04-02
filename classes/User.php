@@ -4,6 +4,7 @@
     private string $place;
     private string $email;
     private string $password;
+    private string $profileImage;
     public function setFirstname($firstname){
         $this->firstname = $firstname;
         return $this;
@@ -24,12 +25,17 @@
         $this->password = $password;
         return $this;
     }
+    public function setProfileImage($image){
+        $this->profileImage = $image;
+        return $this;
+    }
     public function setUser(){
 		try {
 			$conn = Db::getInstance();
-            $statement = $conn->prepare("INSERT INTO users(`firstname`, `lastname`, `photo_url`, `place`, `email`, `password`) VALUES (:firstname,:lastname,'https://picsum.photos/200',:place,:email,:password)");
+            $statement = $conn->prepare("INSERT INTO users(`firstname`, `lastname`, `photo_url`, `place`, `email`, `password`) VALUES (:firstname,:lastname,:image,:place,:email,:password)");
             $statement->bindValue(":firstname", $this->firstname);
             $statement->bindValue(":lastname", $this->lastname);
+            $statement->bindValue(":image", $this->profileImage);
             $statement->bindValue(":place", $this->place);
             $statement->bindValue(":email", $this->email);
             $statement->bindValue(":password", $this->password);

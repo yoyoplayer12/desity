@@ -13,6 +13,8 @@
                 $_SESSION['lastname'] = $user['lastname'];
                 $_SESSION['place'] = $user['place'];
                 $_SESSION['email'] = $user['email'];
+                $_SESSION['pfpic'] = $user['photo_url'];
+
                 return true;
             }
             else{

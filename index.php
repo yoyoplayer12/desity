@@ -5,22 +5,29 @@
         if (!empty($_POST)) {
             try{
                 $post = new Post();
+                //fixing image
+                $title = $_POST['title'];
+                $userId =$_SESSION['userid'];
+                $orig_file = $_FILES["post-image"]["tmp_name"];
+                $ext = pathinfo($_FILES["post-image"]["name"], PATHINFO_EXTENSION);
+                $target_dir = "uploads/posts/";
+                $destination = "$target_dir$title$userId.$ext";
+                move_uploaded_file($orig_file, $destination);
+                $post->setPostImage($destination);
                 $post->setTitle($_POST['title']);
                 $post->setContent($_POST['content']);
                 $post->setUserId($_SESSION["userid"]);
-                // $user_id = $_SESSION['user_id'];
                 $post->setPost();
               }
               catch(Throwable $e){
                 echo $e->getMessage();
               }
-           
         }
         $allPosts = [];
         $allPosts = Post::getPost();
         $fp_place = $_SESSION["place"];
         $fp_name = $_SESSION["firstname"] . " " . $_SESSION["lastname"];;
-      }
+    }
     else{
         header("Location: ./login.php");
     }
@@ -39,12 +46,12 @@
     <?php include_once(__DIR__ . "/nav.php"); ?>
     <div class="feed">
         <div class="newpost">
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <ul>
                     <li><h1 class="newposttitle">New post</h1></li>
                     <li><input type="text" name="title" placeholder="Title" required></li>
                     <li><input type="text" name="content" placeholder="Content" required></li>
-                    <li><input type="file" id="post-image" name="post-image" accept="image/png, image/jpeg, image/jpg" value="empty"></li>
+                    <li><input type="file" id="post-image" name="post-image" accept="image/*" required></li>
                     <li><input type="submit" value="Post"></li>
                 </ul>
                 
@@ -65,7 +72,7 @@
                         <ul>
                             <li><h1><?php echo $post['title']?></h1></li>
                             <li><?php echo $allPostUsers[0]['firstname']. " " .$allPostUsers[0]['lastname']?></li>
-                            <li><img src="<?php echo $post['photo_url']?>" alt="post photo"></li>
+                            <li><img class="postpic" src="<?php echo $post['photo_url']?>" alt="post photo"></li>
                             <li><?php echo $post['content']?></li>
                             <li><?php echo substr($post['postdate'],0,16)?></li>
                         </ul>

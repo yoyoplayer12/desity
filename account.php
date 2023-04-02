@@ -19,6 +19,7 @@
 </head>
 <body>
     <?php include_once(__DIR__ . "/nav.php"); ?>
+    <img  class="account-avatar" src="<?php echo $_SESSION["pfpic"]?>" alt="Avatar">
     <h1>Name: <?php echo $_SESSION["firstname"]?></h1>
     <h1>Last name: <?php echo $_SESSION["lastname"]?></h1>
     <h1>Email: <?php echo $_SESSION["email"]?></h1>

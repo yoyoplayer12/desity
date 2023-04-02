@@ -170,7 +170,15 @@ a:hover{
 .noposts{
     text-align: center;
     font-size: 30px;
-    color: var(--white);
+    color: var(--black);
     margin-bottom: 20px;
     margin-top: 50px;
+}
+.account-avatar{
+    width: 300px;
+    height: auto;
+}
+
+.postpic{
+    width: 40vw;
 }

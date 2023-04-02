@@ -1,7 +1,8 @@
 <?php
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
-	if(!empty($_POST)){
+    if(!empty($_POST)){
+        
         $user = new User();
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
@@ -11,6 +12,14 @@
 			'cost' => 15,
 		];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT, $options);
+
+        //fixing image
+        $orig_file = $_FILES["avatar"]["tmp_name"];
+        $ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+        $target_dir = "uploads/profiles/";
+        $destination = "$target_dir$email.$ext";
+        move_uploaded_file($orig_file, $destination);
+        $user->setProfileImage($destination);
         $user->setFirstname($firstname);
         $user->setLastname($lastname);
         $user->setEmail($email);
@@ -34,10 +43,13 @@
     <?php include_once(__DIR__ . "/nav.php"); ?>
 
     <div class="signupform">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <h1>Register</h1>
             <ul>
-                <li><input type="file" name="pf-pic"></li>
+                <div class="custom-file">
+                    <li><label class="custom-file-label" for="avatar">Choose a profile picture</label></li>
+                    <li><input type="file" accept="image/*" id="avatar" name="avatar" class="custom-file-input" required></li>
+                </div>
                 <li><input type="text" name="firstname" placeholder="First name" required></li>
                 <li><input type="text" name="lastname" placeholder="Last name" required></li>
                 <li><input type="text" name="email" placeholder="Email" required></li>

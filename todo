@@ -1,7 +1,8 @@
 Index.php
-    - Fix foto uploaden ==> yorick dunno hoe dit moet
     - fix naam ipv login links bovenaan
     - fix styling
+    - make polls work
+    - rn img has to be required --> we need to fix this
 
 
 

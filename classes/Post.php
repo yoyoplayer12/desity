@@ -33,10 +33,15 @@
         $this->user_id = $user_id;
         return $this;
     }
+    public function setPostImage($image){
+        $this->photo_url = $image;
+        return $this;
+    }
     public function setPost(){
         $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO posts(`title`, `photo_url`, `content`, `user_id`) VALUES (:title,'https://picsum.photos/600/400',:content,:user_id)");
+        $statement = $conn->prepare("INSERT INTO posts(`title`, `photo_url`, `content`, `user_id`) VALUES (:title,:image,:content,:user_id)");
         $statement->bindValue(":title", $this->title);
+        $statement->bindValue(":image", $this->photo_url);
         $statement->bindValue(":content", $this->content);
         // $statement->bindValue(":photo_url", $this->photo_url);
         $statement->bindValue(":user_id", $this->user_id);
