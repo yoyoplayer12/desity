@@ -1,7 +1,8 @@
 Index.php
-    - Fix link tussen backend en post maken
     - Fix foto uploaden ==> yorick dunno hoe dit moet
-
+    - fix naam ipv login links bovenaan
+    - fix styling
+    - fix fallback voor als er geen posts op de fp staan
 
 
 

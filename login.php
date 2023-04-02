@@ -1,5 +1,18 @@
 <?php
-
+    include_once(__DIR__ . "/bootstrap.php");
+    include_once(__DIR__ . "/loginCheck.php");
+    if(!empty($_POST)){
+        //er is gesubmit
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        if(canLogin($email, $password)){
+            $_SESSION['loggedin'] = true;
+            header("Location: ./index.php");
+        }
+        else {
+            echo "Wrong password or username";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

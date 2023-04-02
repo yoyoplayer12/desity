@@ -1,26 +1,30 @@
 <?php 
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
-    if (!empty($_POST)) {
-        try{
-
-            $post = new Post();
-            $post->setTitle($_POST['title']);
-            $post->setContent($_POST['content']);
-            $post->setUserId(1);
-            echo("yess");
-            // $user_id = $_SESSION['user_id'];
-            $post->setPost();
-          }
-          catch(Throwable $e){
-            echo("fuck");
-            echo $e->getMessage();
-          }
-       
-    }
-    $allPosts = [];
-    $allPosts = Post::getPost();
-
+    if($_SESSION['loggedin'] === true) {
+        if (!empty($_POST)) {
+            try{
+    
+                $post = new Post();
+                $post->setTitle($_POST['title']);
+                $post->setContent($_POST['content']);
+                $post->setUserId($_SESSION["userid"]);
+                // $user_id = $_SESSION['user_id'];
+                $post->setPost();
+              }
+              catch(Throwable $e){
+                echo $e->getMessage();
+              }
+           
+        }
+        $allPosts = [];
+        $allPosts = Post::getPost();
+        $fp_place = $_SESSION["place"];
+        $fp_name = $_SESSION["firstname"] . $_SESSION["lastname"];;
+      }
+      else{
+        header("Location: ./login.php");
+      }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,16 +39,22 @@
 <body>
     <?php include_once(__DIR__ . "/nav.php"); ?>
     <div class="feed">
-
         <div class="newpost">
             <form action="" method="post">
-                <input type="text" name="title" placeholder="Title" required>
-                <input type="text" name="content" placeholder="Content" required>
-                <input type="file" id="post-image" name="post-image" accept="image/png, image/jpeg, image/jpg" value="empty">
-                <input type="submit" value="Post">
+                <ul>
+                    <li><h1 class="newposttitle">New post</h1></li>
+                    <li><input type="text" name="title" placeholder="Title" required></li>
+                    <li><input type="text" name="content" placeholder="Content" required></li>
+                    <li><input type="file" id="post-image" name="post-image" accept="image/png, image/jpeg, image/jpg" value="empty"></li>
+                    <li><input type="submit" value="Post"></li>
+                </ul>
+                
+                
+               
+
             </form>
         </div>
-
+        <h1 class="fp-place"><?php echo $fp_place ?></h1>
         <?php foreach($allPosts as $post): ?>
             <?php $allPostUsers = Post::getPostUser($post['user_id']); ?>
                 <div class="feedpost">

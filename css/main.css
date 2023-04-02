@@ -149,3 +149,20 @@ a:hover{
     color: var(--signuhover);
     text-decoration: underline;
 }
+.fp-place{
+    text-align: center;
+    font-size: 50px;
+    color: var(--black);
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+.fp-place::first-letter{
+    text-transform: capitalize;
+}
+.newposttitle{
+    text-align: center;
+    font-size: 30px;
+    color: var(--black);
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
