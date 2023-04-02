@@ -1,7 +1,15 @@
+:root {
+    --backgroundcolor: rgb(169, 57, 57);
+    --white: white;
+    --feedpostbackground: rgb(215, 215, 215);
+    --feedbackground: rgb(233, 233, 233);
+    --navbackground: rgb(70, 33, 33);
+  }
+  
 body{
-    background-color: rgb(169, 57, 57);
+    background-color: var(--backgroundcolor);
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    color: var(--white);
 }
 .feedpost{
     display: flex;
@@ -9,7 +17,7 @@ body{
     width: 50vw;
     margin-left: 5vw;
     color: black;
-    background-color: rgb(215, 215, 215);
+    background-color: var(--feedpostbackground);
     border-radius: 10px;
     margin-bottom: 20px;
     padding-bottom: 40px;
@@ -18,14 +26,14 @@ body{
 .feed{
     width: 60vw;
     margin-left: 20vw;
-    background-color: rgb(233, 233, 233);
+    background-color: var(--feedbackground);
     padding-top: 50px;
     padding-bottom: 50px;
 }
 nav{
     width: 100vw;
     height: 100px;
-    background-color: rgb(70, 33, 33);
+    background-color: var(--navbackground);
     margin-bottom: 20px;
 }
 nav ul{
