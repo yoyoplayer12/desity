@@ -53,7 +53,7 @@
                         <li><?php echo $allPostUsers[0]['firstname']. " " .$allPostUsers[0]['lastname']?></li>
                         <li><img src="<?php echo $post['photo_url']?>" alt="post photo"></li>
                         <li><?php echo $post['content']?></li>
-                        <li><?php echo $post['postdate']?></li>
+                        <li><?php echo substr($post['postdate'],0,16)?></li>
                     </ul>
                     <!-- <img src="" alt="">
                     <address>Username</address>
