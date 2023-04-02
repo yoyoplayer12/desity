@@ -1,10 +1,12 @@
 :root {
+    /* Background colors */
     --backgroundcolor: rgb(169, 57, 57);
-    --white: white;
-    --black: black;
     --feedpostbackground: rgb(215, 215, 215);
     --feedbackground: rgb(233, 233, 233);
     --navbackground: rgb(70, 33, 33);
+    /* Fonts */
+    --white: white;
+    --black: black;
     --navhover: rgb(212, 38, 38);
   }
   
