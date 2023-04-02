@@ -1,14 +1,15 @@
 :root {
     /* Background colors */
-    --backgroundcolor: rgb(169, 57, 57);
-    --feedpostbackground: rgb(215, 215, 215);
-    --feedbackground: rgb(233, 233, 233);
-    --navbackground: rgb(70, 33, 33);
+    --backgroundcolor: #6633CC;
+    --feedpostbackground: #666699;
+    --feedbackground: #F5F5F5;
+    --navbackground: #666699;
     /* Fonts */
-    --white: white;
-    --black: black;
-    --navhover: rgb(212, 38, 38);
-    --signuhover: rgb(212, 38, 38);
+    --white: #F5F5F5;
+    --black: #0D0F0E;
+    --green: #40DB5D;
+    --navhover: #40DB5D;
+    --signuhover: #40DB5D;
   }
   
 body{
@@ -21,7 +22,7 @@ body{
     justify-content: center;
     width: 50vw;
     margin-left: 5vw;
-    color: black;
+    color: var(--white);
     background-color: var(--feedpostbackground);
     border-radius: 10px;
     margin-bottom: 20px;
@@ -54,7 +55,7 @@ ul{
     margin: 0;
 }
 a:link, a:visited, a:active{
-    color: white;
+    color: var(--white);
     text-decoration: none;
 }
 a:hover{
@@ -65,7 +66,7 @@ a:hover{
     justify-content: center;
     width: 50vw;
     margin-left: 5vw;
-    color: var(--black);
+    color: var(--white);
     background-color: var(--feedpostbackground);
     border-radius: 10px;
     margin-bottom: 20px;
@@ -85,7 +86,7 @@ a:hover{
     text-align: center;
     width: 50vw;
     margin-left: 25vw;
-    color: var(--black);
+    color: var(--white);
     background-color: var(--feedpostbackground);
     border-radius: 10px;
     margin-bottom: 20px;
@@ -108,7 +109,7 @@ a:hover{
     margin-bottom: 10px;
 }
 .loginform a{
-    color: var(--black);
+    color: var(--white);
 }
 .loginform a:hover{
     color: var(--signuhover);
@@ -120,7 +121,7 @@ a:hover{
     text-align: center;
     width: 50vw;
     margin-left: 25vw;
-    color: var(--black);
+    color: var(--white);
     background-color: var(--feedpostbackground);
     border-radius: 10px;
     margin-bottom: 20px;
@@ -143,7 +144,7 @@ a:hover{
     margin-bottom: 10px;
 }
 .signupform a{
-    color: var(--black);
+    color: var(--white);
 }
 .signupform a:hover{
     color: var(--signuhover);
@@ -162,14 +163,14 @@ a:hover{
 .newposttitle{
     text-align: center;
     font-size: 30px;
-    color: var(--black);
+    color: var(--white);
     margin-bottom: 20px;
     margin-top: 50px;
 }
 .noposts{
     text-align: center;
     font-size: 30px;
-    color: var(--black);
+    color: var(--white);
     margin-bottom: 20px;
     margin-top: 50px;
 }
