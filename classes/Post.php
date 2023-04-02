@@ -27,7 +27,6 @@
     }
     public function setPhotoUrl($photo_url){
         $this->photo_url = $photo_url;
-        var_dump($this->photo_url);
         return $this;
     }
     public function setUserId($user_id){
