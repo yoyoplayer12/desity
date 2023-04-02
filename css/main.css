@@ -1,9 +1,11 @@
 :root {
     --backgroundcolor: rgb(169, 57, 57);
     --white: white;
+    --black: black;
     --feedpostbackground: rgb(215, 215, 215);
     --feedbackground: rgb(233, 233, 233);
     --navbackground: rgb(70, 33, 33);
+    --navhover: rgb(212, 38, 38);
   }
   
 body{
@@ -53,15 +55,15 @@ a:link, a:visited, a:active{
     text-decoration: none;
 }
 a:hover{
-    color: rgb(212, 38, 38);
+    color: var(--navhover);
 }
 .newpost{
     display: flex;
     justify-content: center;
     width: 50vw;
     margin-left: 5vw;
-    color: black;
-    background-color: rgb(215, 215, 215);
+    color: var(--black);
+    background-color: var(--feedpostbackground);
     border-radius: 10px;
     margin-bottom: 20px;
     padding-bottom: 40px;
