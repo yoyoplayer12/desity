@@ -4,7 +4,6 @@
     if($_SESSION['loggedin'] === true) {
         if (!empty($_POST)) {
             try{
-    
                 $post = new Post();
                 $post->setTitle($_POST['title']);
                 $post->setContent($_POST['content']);
@@ -55,22 +54,27 @@
             </form>
         </div>
         <h1 class="fp-place"><?php echo $fp_place ?></h1>
-        <?php foreach($allPosts as $post): ?>
-            <?php $allPostUsers = Post::getPostUser($post['user_id']); ?>
-                <div class="feedpost">
-                    <ul>
-                        <li><h1><?php echo $post['title']?></h1></li>
-                        <li><?php echo $allPostUsers[0]['firstname']. " " .$allPostUsers[0]['lastname']?></li>
-                        <li><img src="<?php echo $post['photo_url']?>" alt="post photo"></li>
-                        <li><?php echo $post['content']?></li>
-                        <li><?php echo substr($post['postdate'],0,16)?></li>
-                    </ul>
-                    <!-- <img src="" alt="">
-                    <address>Username</address>
-                    <p>content</p>
-                    <address>Date</address> -->
-                </div>
-        <?php endforeach; ?>
+        <?php 
+        if (empty($allPosts)) {
+            echo "<h1 class='noposts'>Sorry, your neighborhood hasn't posted yet!</h1>";
+        }
+        else{
+            foreach($allPosts as $post): ?>
+                <?php $allPostUsers = Post::getPostUser($post['user_id']); ?>
+                    <div class="feedpost">
+                        <ul>
+                            <li><h1><?php echo $post['title']?></h1></li>
+                            <li><?php echo $allPostUsers[0]['firstname']. " " .$allPostUsers[0]['lastname']?></li>
+                            <li><img src="<?php echo $post['photo_url']?>" alt="post photo"></li>
+                            <li><?php echo $post['content']?></li>
+                            <li><?php echo substr($post['postdate'],0,16)?></li>
+                        </ul>
+                        <!-- <img src="" alt="">
+                        <address>Username</address>
+                        <p>content</p>
+                        <address>Date</address> -->
+                    </div>
+            <?php endforeach; }?>
     </div>
 </body>
 </html>

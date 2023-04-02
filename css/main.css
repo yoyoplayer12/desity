@@ -166,3 +166,10 @@ a:hover{
     margin-bottom: 20px;
     margin-top: 50px;
 }
+.noposts{
+    text-align: center;
+    font-size: 30px;
+    color: var(--black);
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
