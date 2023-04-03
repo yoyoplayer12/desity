@@ -281,3 +281,7 @@ a#like{
     margin-bottom: 20px;
     margin-top: 50px;
 }
+.resident-avatar{
+    width: 100px;
+    height: auto;
+}
