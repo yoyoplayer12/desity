@@ -214,3 +214,33 @@ a#like{
     margin-bottom: 20px;
     margin-top: 50px;
 }
+.poll{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 40vw;
+    margin-left: 5vw;
+    color: var(--white);
+    border-radius: 10px;
+}
+.poll-options{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 40vw;
+    color: var(--white);
+    border-radius: 10px;
+    padding-top: 20px;
+}
+.polltitle{
+    text-align: center;
+    font-size: 30px;
+    color: var(--white);
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+.pollvotes{
+    text-align: center;
+    font-size: 20px;
+    color: var(--white);
+}

@@ -5,6 +5,7 @@
         if (!empty($_POST)) {
             try{
                 $post = new Post();
+                $poll = new Poll();
                 //fixing image
                 $title = $_POST['title'];
                 $userId = $_SESSION['userid'];
@@ -17,6 +18,7 @@
                 $post->setTitle($_POST['title']);
                 $post->setContent($_POST['content']);
                 $post->setUserId($_SESSION["userid"]);
+                //pollstuff and final post setting
                 $post->setPost();
               }
               catch(Throwable $e){
@@ -25,8 +27,12 @@
         }
         $allPosts = [];
         $allComments = [];
+        $allMainPolls = [];
+        $allPollOptions = [];
         $allPosts = Post::getPost();
         $allComments = Comment::getComment();
+        $allMainPolls = Poll::getMainPolls();
+        $allPollOptions = Poll::getPollOption();
         $fp_place = $_SESSION["place"];
         $fp_name = $_SESSION["firstname"] . " " . $_SESSION["lastname"];;
     }
@@ -55,6 +61,10 @@
                     <li><h1 class="newposttitle">New post</h1></li>
                     <li><input type="text" name="title" placeholder="Title" required></li>
                     <li><input type="text" name="content" placeholder="Content" required></li>
+                    <li><input type="text" name="Poll-title" placeholder="Poll Title" required></li>
+                    <li><input type="text" name="Poll-option-1" placeholder="Poll option 1" required></li>
+                    <li><input type="text" name="Poll-option-2" placeholder="Poll option 2" required></li>
+                    <li><input type="text" name="Poll-option-3" placeholder="Poll option 3"></li>
                     <li><input type="file" id="post-image" name="post-image" accept="image/*" required></li>
                     <li><input type="submit" value="Post"></li>
                 </ul>
@@ -79,6 +89,23 @@
                                 <li><?php echo $post['content']?></li>
                                 <li><?php echo substr($post['postdate'],0,16)?></li>
                             </ul>
+                        </div>
+                        <!-- show all poll options -->
+                        <div class="poll">
+                            <?php foreach($allMainPolls as $mainpolls): ?>
+                                <?php if($mainpolls['post_id'] == $post['id']):?>
+                                    <?php foreach($allPollOptions as $pollOption): ?>
+                                        <?php if($pollOption['mainpoll_id'] == $mainpolls['id']):?>
+                                            <div class="poll-options">
+                                                <ul>
+                                                    <li class="polltitle"><?php echo $pollOption['title']?></li>
+                                                    <li class="pollvotes"><a href="#" id="like"><?php echo $pollOption["votes"]?> vote</a></li>
+                                                </ul>
+                                            </div>
+                                        <?php endif;?>
+                                        <?php endforeach;?>
+                                <?php endif;?>
+                                <?php endforeach;?>
                         </div>
                         <!-- show all comments -->
                         <div class="comment">
