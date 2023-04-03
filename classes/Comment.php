@@ -37,7 +37,6 @@
         $statement->bindValue(":post_id", $this->post_id);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($result);
         return $result;
     }
 }

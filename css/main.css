@@ -252,3 +252,25 @@ a#like{
     margin-bottom: 20px;
     margin-top: 50px;
 }
+.residenttitle{
+    text-align: center;
+    font-size: 30px;
+    color: var(--white);
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+.resident{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 40vw;
+    margin-left: 30vw;
+    padding-left: 5vw;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: var(--white);
+    background-color: var(--feedpostbackground);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 10px;
+}
