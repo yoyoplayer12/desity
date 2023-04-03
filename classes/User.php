@@ -29,6 +29,14 @@
         $this->profileImage = $image;
         return $this;
     }
+    public function getUser(){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT `email` FROM users WHERE email = :email");
+        $statement->bindValue(":email", $this->email);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
     public function setUser(){
 		try {
 			$conn = Db::getInstance();

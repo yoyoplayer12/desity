@@ -1,8 +1,8 @@
 <?php
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
+    $emailwarning = " ";
     if(!empty($_POST)){
-        
         $user = new User();
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
@@ -12,21 +12,25 @@
 			'cost' => 15,
 		];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT, $options);
-
-        //fixing image
-        $orig_file = $_FILES["avatar"]["tmp_name"];
-        $ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
-        $target_dir = "uploads/profiles/";
-        $destination = "$target_dir$email.$ext";
-        move_uploaded_file($orig_file, $destination);
-        $user->setProfileImage($destination);
-        $user->setFirstname($firstname);
-        $user->setLastname($lastname);
         $user->setEmail($email);
-        $user->setPlace($place);
-        $user->setPassword($password);
-        $user->setUser();
-        header("Location: login.php");
+        if($user->getUser() === false){
+            //fixing image    
+            $orig_file = $_FILES["avatar"]["tmp_name"];
+            $ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+            $target_dir = "uploads/profiles/";
+            $destination = "$target_dir$email.$ext";
+            move_uploaded_file($orig_file, $destination);
+            $user->setProfileImage($destination);
+            $user->setFirstname($firstname);
+            $user->setLastname($lastname);
+            $user->setPlace($place);
+            $user->setPassword($password);
+            $user->setUser();
+            header("Location: login.php");
+        }
+        else{
+            $emailwarning = "This email is already in use";
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -58,6 +62,7 @@
                 <li><input type="password" name="password-repeat" placeholder="Repeat password" required></li>
                 <li><input type="submit" value="Register"></li>
                 <li><a href="login.php">Log in</a></li>
+                <li class="warningtext"><?php echo $emailwarning ?></li>
             </ul>
         </form>
     </div>

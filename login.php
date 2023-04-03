@@ -45,7 +45,7 @@
                 <li><input type="password" name="password" placeholder="Password" required></li>
                 <li><input type="submit" value="Log in"></li>
                 <li><a href="register.php">Create an account</a></li>
-                <li class="loginwarning"><?php echo $loginwarning ?></li>
+                <li class="warningtext"><?php echo $loginwarning ?></li>
             </ul>
         </form>
     </div>

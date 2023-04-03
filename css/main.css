@@ -245,7 +245,7 @@ a#like{
     font-size: 20px;
     color: var(--white);
 }
-.loginwarning{
+.warningtext{
     text-align: center;
     font-size: 20px;
     color: var(--warning);
@@ -273,4 +273,11 @@ a#like{
     border-radius: 10px;
     margin-bottom: 20px;
     font-size: 10px;
+}
+.mainpolltitle{
+    text-align: center;
+    font-size: 30px;
+    color: var(--white);
+    margin-bottom: 20px;
+    margin-top: 50px;
 }

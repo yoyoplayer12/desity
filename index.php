@@ -96,6 +96,7 @@
                         <!-- show all poll options -->
                         <div class="poll">
                             <?php foreach($allMainPolls as $mainpolls): ?>
+                                <h1 class="mainpolltitle"><?php echo $mainpolls['title']?></h1>
                                 <?php if($mainpolls['post_id'] == $post['id']):?>
                                     <?php foreach($allPollOptions as $pollOption): ?>
                                         <?php if($pollOption['mainpoll_id'] == $mainpolls['id']):?>
