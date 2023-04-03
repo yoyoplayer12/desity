@@ -1,7 +1,7 @@
 <?php 
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
-    if($_SESSION['loggedin'] === true) {
+    if(isset($_SESSION["loggedin"])) {
         if (!empty($_POST)) {
             try{
                 $post = new Post();
