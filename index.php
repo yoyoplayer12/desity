@@ -91,7 +91,7 @@
                                             <li class="commentname"><?php echo $allCommentUsers[0]['firstname']. " " .$allCommentUsers[0]['lastname']?></li>
                                             <li><?php echo $comment['content']?></li>
                                             <li><?php echo substr($comment['date'],0,16)?></li>
-                                            <!-- <li><a href="like.action.php" id="like"><?php $_SESSION["commentid"] = $comment['id']; echo $comment["likes"]?> likebutton</a></li> -->
+                                            <li><a href="like.action.php" id="like"><?php echo $comment["likes"]?> likebutton</a></li>
                                         </ul>
                                     </div>
                                 <?php endif;?>

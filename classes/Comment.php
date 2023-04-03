@@ -40,11 +40,4 @@
         var_dump($result);
         return $result;
     }
-    public static function setLike($id){
-        $conn = Db::getInstance();
-        $statement = $conn->prepare("UPDATE comments SET likes = likes + 1 WHERE id = $id");
-        $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
-    }
 }
