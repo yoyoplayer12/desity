@@ -4,12 +4,14 @@
     --feedpostbackground: #666699;
     --feedbackground: #F5F5F5;
     --navbackground: #666699;
+    --commentbackground: #F5F5F5;
     /* Fonts */
     --white: #F5F5F5;
     --black: #0D0F0E;
     --green: #40DB5D;
     --navhover: #40DB5D;
     --signuhover: #40DB5D;
+    --commentcolor: #0D0F0E;
   }
   
 body{
@@ -20,6 +22,7 @@ body{
 .feedpost{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     width: 50vw;
     margin-left: 5vw;
     color: var(--white);
@@ -35,6 +38,26 @@ body{
     background-color: var(--feedbackground);
     padding-top: 50px;
     padding-bottom: 50px;
+}
+.post{
+    width: 40vw;
+    margin-left: 5vw;
+}
+.comment{
+    width: 40vw;
+    margin-left: 5vw;
+    background-color: var(--commentbackground);
+    color: var(--commentcolor);
+    margin-top: 50px;
+}
+.commentheader{
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+.commentname{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 nav{
     width: 100vw;
@@ -178,7 +201,16 @@ a:hover{
     width: 300px;
     height: auto;
 }
-
 .postpic{
     width: 40vw;
+}
+a#like{
+    color: var(--green);
+}
+.nocomments{
+    text-align: center;
+    font-size: 20px;
+    color: var(--black);
+    margin-bottom: 20px;
+    margin-top: 50px;
 }

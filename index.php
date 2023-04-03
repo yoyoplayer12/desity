@@ -7,7 +7,7 @@
                 $post = new Post();
                 //fixing image
                 $title = $_POST['title'];
-                $userId =$_SESSION['userid'];
+                $userId = $_SESSION['userid'];
                 $orig_file = $_FILES["post-image"]["tmp_name"];
                 $ext = pathinfo($_FILES["post-image"]["name"], PATHINFO_EXTENSION);
                 $target_dir = "uploads/posts/";
@@ -24,7 +24,9 @@
               }
         }
         $allPosts = [];
+        $allComments = [];
         $allPosts = Post::getPost();
+        $allComments = Comment::getComment();
         $fp_place = $_SESSION["place"];
         $fp_name = $_SESSION["firstname"] . " " . $_SESSION["lastname"];;
     }
@@ -44,7 +46,9 @@
 </head>
 <body>
     <?php include_once(__DIR__ . "/nav.php"); ?>
+    <!-- feed starts here -->
     <div class="feed">
+        <!-- create a new post -->
         <div class="newpost">
             <form action="" method="post" enctype="multipart/form-data">
                 <ul>
@@ -54,12 +58,9 @@
                     <li><input type="file" id="post-image" name="post-image" accept="image/*" required></li>
                     <li><input type="submit" value="Post"></li>
                 </ul>
-                
-                
-               
-
             </form>
         </div>
+        <!-- show all posts -->
         <h1 class="fp-place"><?php echo $fp_place ?></h1>
         <?php 
         if (empty($allPosts)) {
@@ -68,18 +69,43 @@
         else{
             foreach($allPosts as $post): ?>
                 <?php $allPostUsers = Post::getPostUser($post['user_id']); ?>
+                <?php $_SESSION["postid"] = $post['id'] ?>
                     <div class="feedpost">
-                        <ul>
-                            <li><h1><?php echo $post['title']?></h1></li>
-                            <li><?php echo $allPostUsers[0]['firstname']. " " .$allPostUsers[0]['lastname']?></li>
-                            <li><img class="postpic" src="<?php echo $post['photo_url']?>" alt="post photo"></li>
-                            <li><?php echo $post['content']?></li>
-                            <li><?php echo substr($post['postdate'],0,16)?></li>
-                        </ul>
-                        <!-- <img src="" alt="">
-                        <address>Username</address>
-                        <p>content</p>
-                        <address>Date</address> -->
+                        <div class="post">
+                            <ul>
+                                <li><h1><?php echo $post['title']?></h1></li>
+                                <li><?php echo $allPostUsers[0]['firstname']. " " .$allPostUsers[0]['lastname']?></li>
+                                <li><img class="postpic" src="<?php echo $post['photo_url']?>" alt="post photo"></li>
+                                <li><?php echo $post['content']?></li>
+                                <li><?php echo substr($post['postdate'],0,16)?></li>
+                            </ul>
+                        </div>
+                        <!-- show all comments -->
+                        <div class="comment">
+                            <h1 class="commentheader">Comments</h1>
+                            <?php foreach($allComments as $comment): ?>
+                                <?php $allCommentUsers = Comment::getCommentUser($comment['user_id']); ?>
+                                <?php if($comment['post_id'] == $post['id']):?>
+                                    <div>
+                                        <ul>
+                                            <li class="commentname"><?php echo $allCommentUsers[0]['firstname']. " " .$allCommentUsers[0]['lastname']?></li>
+                                            <li><?php echo $comment['content']?></li>
+                                            <li><?php echo substr($comment['date'],0,16)?></li>
+                                            <!-- <li><a href="like.action.php" id="like"><?php $_SESSION["commentid"] = $comment['id']; echo $comment["likes"]?> likebutton</a></li> -->
+                                        </ul>
+                                    </div>
+                                <?php endif;?>
+                                <?php endforeach;?>
+                            <!-- create a new comment -->
+                            <div class="newcomment"> 
+                                <form action="newcomment.action.php" method="post">
+                                    <ul>
+                                        <li><input type="text" name="content" placeholder="Comment" required></li>
+                                        <li><input type="submit" value="Send"></li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
                     </div>
             <?php endforeach; }?>
     </div>

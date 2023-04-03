@@ -1,8 +1,9 @@
 Index.php
-    - fix naam ipv login links bovenaan
     - fix styling
     - make polls work
     - rn img has to be required --> we need to fix this
+    - fix likes bij comments + comments to comments
+    - fix "posted zo veel minutes ago"
 
 
 
