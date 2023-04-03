@@ -52,7 +52,7 @@
                 </div>
                 <li><input type="text" name="firstname" placeholder="First name" required></li>
                 <li><input type="text" name="lastname" placeholder="Last name" required></li>
-                <li><input type="text" name="email" placeholder="Email" required></li>
+                <li><input type="email" name="email" placeholder="Email" required></li>
                 <li><input type="text" name="place" placeholder="Place" required></li>
                 <li><input type="password" name="password" placeholder="Password" required></li>
                 <li><input type="password" name="password-repeat" placeholder="Repeat password" required></li>
