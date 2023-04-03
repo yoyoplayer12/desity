@@ -9,6 +9,7 @@
                 $comment->setUserId($_SESSION["userid"]);
                 $comment->setPostId($_SESSION["postid"]);
                 $comment->setComment();
+                header("Location: ./index.php");
               }
               catch(Throwable $e){
                 echo $e->getMessage();
