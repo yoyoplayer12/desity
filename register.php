@@ -45,7 +45,6 @@
 </head>
 <body>
     <?php include_once(__DIR__ . "/nav.php"); ?>
-
     <div class="signupform">
         <form action="" method="post" enctype="multipart/form-data">
             <h1>Register</h1>
