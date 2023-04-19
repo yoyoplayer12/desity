@@ -4,8 +4,12 @@
     src: url('../assets/fonts/lato/Lato-Black.ttf');
 }
 @font-face {
-    font-family: 'MuseoSans';
+    font-family: 'MuseoSans-100';
     src: url('../assets/fonts/museo/MuseoSans-100.otf');
+}
+@font-face {
+    font-family: 'MuseoSans-700';
+    src: url('../assets/fonts/museo/MuseoSans-700.otf');
 }
 
 :root {    
@@ -65,9 +69,53 @@
   
 body{
     background-color: var(--neutral-whitesmoke);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: MuseoSans-100, Arial, Helvetica, sans-serif;
     color: var(--neutral-night);
 }
+p{
+    font-size: 16px;
+    line-height: 150%;
+}
+h1{
+    font-family: Lato, Arial, Helvetica, sans-serif;
+    line-height: 64px;
+}
+.grid-container-index{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    width: 80vw;
+    margin-left: 10vw;
+}
+.grid-item-index{
+    padding: 20px;
+    font-size: 30px;
+    text-align: left;
+    width: 40vw;
+}
+nav{
+    font-family: MuseoSans-700, Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    width: 100vw;
+    height: 48px;
+    background-color: var(--neutral-whitesmoke);
+    margin-bottom: 100px;
+}
+.navlogo{
+    position: absolute;
+    left: 12vw;
+}
+nav ul{
+    display: flex;
+    justify-content: right;
+    margin-right: 10vw;
+}
+nav ul li{
+    padding: 10px;
+}
+
+
+
 .feedpost{
     display: flex;
     justify-content: center;
@@ -107,19 +155,6 @@ body{
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
-}
-nav{
-    width: 100vw;
-    height: 100px;
-    background-color: var(--neutral-whitesmoke);
-    margin-bottom: 20px;
-}
-nav ul{
-    display: flex;
-    justify-content: center;
-}
-nav ul li{
-    padding: 10px;
 }
 ul{
     list-style-type: none;
