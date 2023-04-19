@@ -19,10 +19,6 @@
     font-family: 'MuseoSans_700';
     src: url('../assets/fonts/museo/MuseoSans-700.otf');
 }
-@font-face {
-    font-family: 'MuseoSans-700';
-    src: url('../assets/fonts/museo/MuseoSans-700.otf');
-}
 
 :root {    
     /* Primary colors */
