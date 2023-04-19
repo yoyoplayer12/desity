@@ -45,9 +45,13 @@
 </head>
 <body>
     <?php include_once(__DIR__ . "/nav.php"); ?>
+    <!-- register form -->
     <div class="signupform">
         <form action="" method="post" enctype="multipart/form-data">
-            <h1>Register</h1>
+        <h5>GET STARTED</h5>    
+        <h1 style="margin-top: 0;">Create an account</h1>
+        <p class="loginbuttontext-register">Already have an account? <a class="loginbutton-register" href="login.php">Log in</a></p>
+        
             <ul>
                 <div class="custom-file">
                     <li><label class="custom-file-label" for="avatar">Choose a profile picture</label></li>
@@ -60,7 +64,6 @@
                 <li><input type="password" name="password" placeholder="Password" required></li>
                 <li><input type="password" name="password-repeat" placeholder="Repeat password" required></li>
                 <li><input type="submit" value="Register"></li>
-                <li><a href="login.php">Log in</a></li>
                 <li class="warningtext"><?php echo $emailwarning ?></li>
             </ul>
         </form>
