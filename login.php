@@ -3,7 +3,7 @@
     include_once(__DIR__ . "/loginCheck.php");
     $loginwarning = "";
     if (isset($_SESSION["loggedin"])) {
-        header("Location: ./account.php");
+        header("Location: ./dashboard.php");
     }
     if(!empty($_POST)){
         //er is gesubmit

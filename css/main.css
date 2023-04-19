@@ -113,7 +113,19 @@ nav ul{
 nav ul li{
     padding: 10px;
 }
-
+nav ul li a{
+    color: var(--neutral-night);
+}
+.dashboardbutton-index{
+    background-color: var(--primary-green);
+    color: var(--neutral-whitesmoke);
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: MuseoSans-700, Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+}
 
 
 .feedpost{
@@ -162,7 +174,6 @@ ul{
     margin: 0;
 }
 a:link, a:visited, a:active{
-    color: var(--neutral-night);
     text-decoration: none;
 }
 .newpost{
