@@ -16,8 +16,8 @@
     src: url('../assets/fonts/museo/MuseoSans-300.otf');
 }
 @font-face {
-    font-family: 'MuseoSans_700';
-    src: url('../assets/fonts/museo/MuseoSans-700.otf');
+    font-family: 'MuseoSans-700';
+    src: url('../assets/fonts/museo/MuseoSans_700.otf');
 }
 
 :root {    
