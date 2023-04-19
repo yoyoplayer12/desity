@@ -184,10 +184,18 @@ a.loginbutton-register{
 .mainform-register{
     margin-top: 24px;
 }
+.form-grid-container-register{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 50vw;
+    color: var(--neutral-night);
+}
+.form-grid-item-register{
+    text-align: left;
+    width: 20vw;
+}
 
-
-
-
+/* fix this */
 
 
 

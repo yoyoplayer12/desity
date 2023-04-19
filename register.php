@@ -2,7 +2,10 @@
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
     $emailwarning = " ";
-    if(!empty($_POST)){
+    $basisinfo = 0;
+    $otherinfo = 0;
+    $pfpicupload = 0;
+    if(isset($_POST['register'])){
         $user = new User();
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
@@ -26,11 +29,15 @@
             $user->setPlace($place);
             $user->setPassword($password);
             $user->setUser();
-            header("Location: login.php");
+            $basisinfo = 1;
+            // header("Location: login.php");
         }
         else{
             $emailwarning = "This email is already in use";
         }
+    }
+    elseif(isset($_POST['otherinfo'])){
+        
     }
 ?>
 <!DOCTYPE html>
@@ -41,30 +48,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Copoll - Log in</title>
+    <title>Copoll - Create an account</title>
 </head>
 <body>
     <?php include_once(__DIR__ . "/nav.php"); ?>
     <!-- register form -->
     <div class="signupform">
-        <form action="" method="post" enctype="multipart/form-data">
-        <h5>GET STARTED</h5>    
-        <h1 style="margin: 0;">Create an account</h1>
-        <p class="loginbuttontext-register">Already have an account? <a class="loginbutton-register" href="login.php">Log in</a></p>
-            <ul class="mainform-register">
-                <div class="custom-file">
-                    <li><label class="custom-file-label" for="avatar">Choose a profile picture</label></li>
-                    <li><input type="file" accept="image/*" id="avatar" name="avatar" class="custom-file-input" required></li>
-                </div>
-                <li><input type="text" name="firstname" placeholder="First name" required></li>
-                <li><input type="text" name="lastname" placeholder="Last name" required></li>
-                <li><input type="email" name="email" placeholder="Email" required></li>
-                <li><input type="text" name="place" placeholder="Place" required></li>
-                <li><input type="password" name="password" placeholder="Password" required></li>
-                <li><input type="password" name="password-repeat" placeholder="Repeat password" required></li>
-                <li><input type="submit" value="Register"></li>
-                <li class="warningtext"><?php echo $emailwarning ?></li>
-            </ul>
+        <?php if($basisinfo == 0):?>
+            <form action="" method="post" enctype="multipart/form-data">
+                <h5>GET STARTED</h5>    
+                <h1 style="margin: 0;">Create an account</h1>
+                <p class="loginbuttontext-register">Already have an account? <a class="loginbutton-register" href="login.php">Log in</a></p>
+                <ul class="mainform-register">
+                    <div class="formgridcontainer-register">
+                        <li class="form-grid-item-register"><input type="text" name="firstname" placeholder="First name" required></li>
+                        <li class="form-grid-item-register"><input type="text" name="lastname" placeholder="Last name" required></li>
+                    </div>
+                    <li><input type="email" name="email" placeholder="Email" required></li>
+                    <li><input type="text" name="place" placeholder="Place" required></li>
+                    <li><input type="password" name="password" placeholder="Password" required></li>
+                    <li><input type="password" name="password-repeat" placeholder="Repeat password" required></li>
+                    <li><input type="submit" value="Register" name="register"></li>
+                    <li class="warningtext"><?php echo $emailwarning ?></li>
+                </ul>
+            </form>
+        <?php elseif($basisinfo == 1 && $otherinfo == 0): ?>
+            <p>Other info</p>
+            <!-- <form action="" method="post" enctype="multipart/form-data">
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+            </form> -->
+        <?php elseif($basisinfo == 1 && $otherinfo == 1 && $pfpicupload == 0): ?>
+        <!-- <div class="custom-file">
+            <li><label class="custom-file-label" for="avatar">Choose a profile picture</label></li>
+            <li><input type="file" accept="image/*" id="avatar" name="avatar" class="custom-file-input" required></li>
+        </div> -->
+        <?php endif; ?>
         </form>
     </div>
 
