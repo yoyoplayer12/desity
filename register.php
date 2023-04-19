@@ -17,7 +17,7 @@
             //fixing image    
             $orig_file = $_FILES["avatar"]["tmp_name"];
             $ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
-            $target_dir = "uploads/profiles/";
+            $target_dir = "assets/uploads/profiles/";
             $destination = "$target_dir$email.$ext";
             move_uploaded_file($orig_file, $destination);
             $user->setProfileImage($destination);

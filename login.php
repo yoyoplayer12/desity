@@ -13,10 +13,10 @@
             $_SESSION['loggedin'] = true;
             if(isAdmin($email, $password)){
                 $_SESSION['admin'] = true;
-                header("Location: ./index.php");
+                header("Location: ./dashboard.php");
             }
             else{
-                header("Location: ./index.php");
+                header("Location: ./dashboard.php");
             }
         }
         else {
