@@ -178,13 +178,12 @@ a.loginbutton-register{
     font-family: MuseoSans-300, Arial, Helvetica, sans-serif;
     font-size: 24px;
 }
-
-
-
-
-
-
-
+.slogan{
+    color: var(--neutral-night);
+}
+.mainform-register{
+    margin-top: 24px;
+}
 
 
 

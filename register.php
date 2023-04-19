@@ -49,10 +49,9 @@
     <div class="signupform">
         <form action="" method="post" enctype="multipart/form-data">
         <h5>GET STARTED</h5>    
-        <h1 style="margin-top: 0;">Create an account</h1>
+        <h1 style="margin: 0;">Create an account</h1>
         <p class="loginbuttontext-register">Already have an account? <a class="loginbutton-register" href="login.php">Log in</a></p>
-        
-            <ul>
+            <ul class="mainform-register">
                 <div class="custom-file">
                     <li><label class="custom-file-label" for="avatar">Choose a profile picture</label></li>
                     <li><input type="file" accept="image/*" id="avatar" name="avatar" class="custom-file-input" required></li>
