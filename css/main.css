@@ -1,24 +1,72 @@
-:root {
-    /* Background colors */
-    --backgroundcolor: #6633CC;
-    --feedpostbackground: #666699;
-    --feedbackground: #F5F5F5;
-    --navbackground: #666699;
-    --commentbackground: #F5F5F5;
-    /* Fonts */
-    --white: #F5F5F5;
-    --black: #0D0F0E;
-    --green: #40DB5D;
-    --navhover: #40DB5D;
-    --signuhover: #40DB5D;
-    --commentcolor: #0D0F0E;
-    --warning: #af0000;
+/*add local fonts*/
+@font-face {
+    font-family: 'Lato';
+    src: url('../assets/fonts/lato/Lato-Black.ttf');
+}
+@font-face {
+    font-family: 'MuseoSans';
+    src: url('../assets/fonts/museo/MuseoSans-100.otf');
+}
+
+:root {    
+    /* Primary colors */
+    /* Green */
+    --primary-green: #34A14C;
+    --primary-green-100: #D6ECDB;
+    --primary-green-200: #AED9B7;
+    --primary-green-300: #85C794;
+    --primary-green-400: #5DB470;
+    --primary-green-500: #34A14C;
+    --primary-green-600: #277939;
+    --primary-green-700: #1A5126;
+    --primary-green-800: #0D2813;
+    /* blue */
+    --primary-blue: #3E50B4;
+    --primary-blue-100: #D8DCF0;
+    --primary-blue-200: #B2B9E1;
+    --primary-blue-300: #8B96D2;
+    --primary-blue-400: #6573C3;
+    --primary-blue-500: #3E50B4;
+    --primary-blue-600: #2F3C87;
+    --primary-blue-700: #1F285A;
+    --primary-blue-800: #10142D;
+
+    /* secondary colors */
+    /* vividian */
+    --secondary-vividian: #2F8676;
+    --secondary-vividian-100: #D5E7E4;
+    --secondary-vividian-200: #ACCFC8;
+    --secondary-vividian-300: #82B6AD;
+    --secondary-vividian-400: #599E91;
+    --secondary-vividian-500: #2F8676;
+    --secondary-vividian-600: #236559;
+    --secondary-vividian-700: #18433B;
+    --secondary-vividian-800: #0C221E;
+    /* charcoal */
+    --secondary-charcoal: #2C3E50;
+    --secondary-charcoal-100: #D5D8DC;
+    --secondary-charcoal-200: #ABB2B9;
+    --secondary-charcoal-300: #808B96;
+    --secondary-charcoal-400: #566573;
+    --secondary-charcoal-500: #2C3E50;
+    --secondary-charcoal-600: #212F3C;
+    --secondary-charcoal-700: #161F28;
+    --secondary-charcoal-800: #0B1014;
+
+    /* neutral colors */
+    /* french gray */
+    --neutral-frenchgray: #B6BCC7;
+    /* white smoke */
+    --neutral-whitesmoke: #F5F5F5;
+    /* night */
+    --neutral-night: #0D0F0E;
   }
+
   
 body{
-    background-color: var(--backgroundcolor);
+    background-color: var(--neutral-whitesmoke);
     font-family: Arial, Helvetica, sans-serif;
-    color: var(--white);
+    color: var(--neutral-night);
 }
 .feedpost{
     display: flex;
@@ -26,8 +74,8 @@ body{
     flex-direction: column;
     width: 50vw;
     margin-left: 5vw;
-    color: var(--white);
-    background-color: var(--feedpostbackground);
+    color: var(--neutral-night);
+    background-color: var(--neutral-whitesmoke);
     border-radius: 10px;
     margin-bottom: 20px;
     padding-bottom: 40px;
@@ -36,7 +84,7 @@ body{
 .feed{
     width: 60vw;
     margin-left: 20vw;
-    background-color: var(--feedbackground);
+    background-color: var(--neutral-frenchgray);
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -47,8 +95,8 @@ body{
 .comment{
     width: 40vw;
     margin-left: 5vw;
-    background-color: var(--commentbackground);
-    color: var(--commentcolor);
+    background-color: var(--neutral-frenchgray);
+    color: var(--neutral-night);
     margin-top: 50px;
 }
 .commentheader{
@@ -63,7 +111,7 @@ body{
 nav{
     width: 100vw;
     height: 100px;
-    background-color: var(--navbackground);
+    background-color: var(--neutral-whitesmoke);
     margin-bottom: 20px;
 }
 nav ul{
@@ -79,19 +127,16 @@ ul{
     margin: 0;
 }
 a:link, a:visited, a:active{
-    color: var(--white);
+    color: var(--neutral-night);
     text-decoration: none;
-}
-a:hover{
-    color: var(--navhover);
 }
 .newpost{
     display: flex;
     justify-content: center;
     width: 50vw;
     margin-left: 5vw;
-    color: var(--white);
-    background-color: var(--feedpostbackground);
+    color: var(--neutral-night);
+    background-color: var(--neutral-whitesmoke);
     border-radius: 10px;
     margin-bottom: 20px;
     padding-bottom: 40px;
@@ -110,8 +155,8 @@ a:hover{
     text-align: center;
     width: 50vw;
     margin-left: 25vw;
-    color: var(--white);
-    background-color: var(--feedpostbackground);
+    color: var(--neutral-whitesmoke);
+    background-color: var(--neutral-frenchgray);
     border-radius: 10px;
     margin-bottom: 20px;
     margin-top: 50px;
@@ -133,10 +178,9 @@ a:hover{
     margin-bottom: 10px;
 }
 .loginform a{
-    color: var(--white);
+    color: var(--neutral-whitesmoke);
 }
 .loginform a:hover{
-    color: var(--signuhover);
     text-decoration: underline;
 }
 .signupform{
@@ -145,8 +189,8 @@ a:hover{
     text-align: center;
     width: 50vw;
     margin-left: 25vw;
-    color: var(--white);
-    background-color: var(--feedpostbackground);
+    color: var(--neutral-night);
+    background-color: var(--neutral-frenchgray);
     border-radius: 10px;
     margin-bottom: 20px;
     margin-top: 50px;
@@ -168,10 +212,9 @@ a:hover{
     margin-bottom: 10px;
 }
 .signupform a{
-    color: var(--white);
+    color: var(--neutral-whitesmoke);
 }
 .signupform a:hover{
-    color: var(--signuhover);
     text-decoration: underline;
 }
 .fp-place{
@@ -187,14 +230,14 @@ a:hover{
 .newposttitle{
     text-align: center;
     font-size: 30px;
-    color: var(--white);
+    color: var(--neutral-night);
     margin-bottom: 20px;
     margin-top: 50px;
 }
 .noposts{
     text-align: center;
     font-size: 30px;
-    color: var(--black);
+    color: var(--neutral-night);
     margin-bottom: 20px;
     margin-top: 50px;
 }
@@ -206,12 +249,12 @@ a:hover{
     width: 40vw;
 }
 a#like{
-    color: var(--green);
+    color: var(--primary-green);
 }
 .nocomments{
     text-align: center;
     font-size: 20px;
-    color: var(--black);
+    color: var(--neutral-night);
     margin-bottom: 20px;
     margin-top: 50px;
 }
@@ -221,7 +264,7 @@ a#like{
     flex-direction: column;
     width: 40vw;
     margin-left: 5vw;
-    color: var(--white);
+    color: var(--neutral-night);
     border-radius: 10px;
 }
 .poll-options{
@@ -229,21 +272,21 @@ a#like{
     justify-content: center;
     flex-direction: column;
     width: 40vw;
-    color: var(--white);
+    color: var(--neutral-night);
     border-radius: 10px;
     padding-top: 20px;
 }
 .polltitle{
     text-align: center;
     font-size: 30px;
-    color: var(--white);
+    color: var(--neutral-night);
     margin-bottom: 20px;
     margin-top: 50px;
 }
 .pollvotes{
     text-align: center;
     font-size: 20px;
-    color: var(--white);
+    color: var(--neutral-night);
 }
 .warningtext{
     text-align: center;
@@ -255,7 +298,7 @@ a#like{
 .residenttitle{
     text-align: center;
     font-size: 30px;
-    color: var(--white);
+    color: var(--neutral-night);
     margin-bottom: 20px;
     margin-top: 50px;
 }
@@ -268,8 +311,8 @@ a#like{
     padding-left: 5vw;
     padding-top: 20px;
     padding-bottom: 20px;
-    color: var(--white);
-    background-color: var(--feedpostbackground);
+    color: var(--neutral-night);
+    background-color: var(--neutral-frenchgray);
     border-radius: 10px;
     margin-bottom: 20px;
     font-size: 10px;
@@ -277,7 +320,7 @@ a#like{
 .mainpolltitle{
     text-align: center;
     font-size: 30px;
-    color: var(--white);
+    color: var(--neutral-night);
     margin-bottom: 20px;
     margin-top: 50px;
 }
