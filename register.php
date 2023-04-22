@@ -54,48 +54,52 @@
     <?php include_once(__DIR__ . "/nav.php"); ?>
     <!-- register form -->
     <div class="signupform">
-        <?php if($basisinfo == 0):?>
-            <form action="" method="post" enctype="multipart/form-data">
-                <h5>GET STARTED</h5>    
-                <h1 style="margin: 0;">Create an account</h1>
-                <p class="loginbuttontext-register">Already have an account? <a class="loginbutton-register" href="login.php">Log in</a></p>
-                <ul class="mainform-register">
-                    <div class="form-grid-container-register-left">
-                        <li class="form-grid-item-register-1-2"><input type="text" name="firstname" placeholder="First name" required></li>
-                        <li class="form-grid-item-register-1-2"><input type="text" name="lastname" placeholder="Last name" required></li>
-                    </div>
-                    <li><input class="form-grid-item-register-2-2" type="email" name="email" placeholder="Email" required></li>
-                    <div class="form-grid-container-register-left">
-                        <select name="city" id="city" class="city-register" placehol required>
-                            <option value="" disabled selected>City</option>
-                            <option value="schiplaken">Schiplaken</option>
-                            <option value="mechelen">Mechelen</option>
-                        </select>
-                        <li class="form-grid-item-register-1-2"><input type="text" name="street/number" placeholder="Street, number" required></li>
-                    </div>
-                    
-                    <li><input class="form-grid-item-register-2-2" type="password" name="password" placeholder="Password" required></li>
-                    <li><input class="form-grid-item-register-2-2" type="password" name="password-repeat" placeholder="Repeat password" required></li>
-                    <li><input type="submit" value="NEXT" name="next"></li>
-                    <li class="warningtext"><?php echo $emailwarning ?></li>
-                </ul>
-            </form>
-        <?php elseif($basisinfo == 1 && $otherinfo == 0): ?>
-            <p>Other info</p>
-            <!-- <form action="" method="post" enctype="multipart/form-data">
-                <ul>
-                    <li>
+        <div class="signupform-container-input">
+            <?php if($basisinfo == 0):?>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <h5>GET STARTED</h5>    
+                    <h1 style="margin: 0;">Create an account</h1>
+                    <p class="loginbuttontext-register">Already have an account? <a class="loginbutton-register" href="login.php">Log in</a></p>
+                    <ul class="mainform-register">
+                        <div class="form-grid-container-register-left">
+                            <li class="form-grid-item-register-1-2"><input type="text" name="firstname" placeholder="First name" required></li>
+                            <li class="form-grid-item-register-1-2"><input type="text" name="lastname" placeholder="Last name" required></li>
+                        </div>
+                        <li><input class="form-grid-item-register-2-2" type="email" name="email" placeholder="Email" required></li>
+                        <div class="form-grid-container-register-left">
+                            <select name="city" id="city" class="city-register" placehol required>
+                                <option value="" disabled selected>City</option>
+                                <option value="schiplaken">Schiplaken</option>
+                                <option value="mechelen">Mechelen</option>
+                            </select>
+                            <li class="form-grid-item-register-1-2"><input type="text" name="street/number" placeholder="Street, number" required></li>
+                        </div>
+                        
+                        <li><input class="form-grid-item-register-2-2" type="password" name="password" placeholder="Password" required></li>
+                        <li><input class="form-grid-item-register-2-2" type="password" name="password-repeat" placeholder="Repeat password" required></li>
+                        <li><input type="submit" value="NEXT" name="next"></li>
+                        <li class="warningtext"><?php echo $emailwarning ?></li>
+                    </ul>
+                </form>
+            <?php elseif($basisinfo == 1 && $otherinfo == 0): ?>
+                <p>Other info</p>
+                <!-- <form action="" method="post" enctype="multipart/form-data">
+                    <ul>
+                        <li>
 
-                    </li>
-                </ul>
-            </form> -->
-        <?php elseif($basisinfo == 1 && $otherinfo == 1 && $pfpicupload == 0): ?>
-        <!-- <div class="custom-file">
-            <li><label class="custom-file-label" for="avatar">Choose a profile picture</label></li>
-            <li><input type="file" accept="image/*" id="avatar" name="avatar" class="custom-file-input" required></li>
-        </div> -->
-        <?php endif; ?>
-        </form>
+                        </li>
+                    </ul>
+                </form> -->
+            <?php elseif($basisinfo == 1 && $otherinfo == 1 && $pfpicupload == 0): ?>
+            <!-- <div class="custom-file">
+                <li><label class="custom-file-label" for="avatar">Choose a profile picture</label></li>
+                <li><input type="file" accept="image/*" id="avatar" name="avatar" class="custom-file-input" required></li>
+            </div> -->
+            <?php endif; ?>
+        </div>
+        <div class="signupform-container-img">
+            <img src="https://placehold.co/400x600" alt="Placeholder">
+        </div>
     </div>
 
 </body>

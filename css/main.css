@@ -180,7 +180,7 @@ a.loginbutton-register{
 .form-grid-container-register-left{
     display: grid;
     grid-template-columns: auto auto;
-    width: 50vw;
+    width: 560px;
     justify-content: left;
     column-gap: 32px;
     color: var(--neutral-night);
@@ -215,6 +215,12 @@ select{
     background-color: var(--neutral-whitesmoke);
     margin-bottom: 10px;
     color: var(--secondary-charcoal);
+}
+.signupform-container-input{
+    width: 560px;
+}
+.signupform-container-img{
+    margin-left: 112px;
 }
 /* fix this */
 
