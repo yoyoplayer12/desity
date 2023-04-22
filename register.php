@@ -98,7 +98,7 @@
             <?php endif; ?>
         </div>
         <div class="signupform-container-img">
-            <img src="https://placehold.co/400x600" alt="Placeholder">
+            <img src="https://placehold.co/600x600" alt="Placeholder">
         </div>
     </div>
 
