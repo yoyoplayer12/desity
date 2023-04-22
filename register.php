@@ -60,15 +60,23 @@
                 <h1 style="margin: 0;">Create an account</h1>
                 <p class="loginbuttontext-register">Already have an account? <a class="loginbutton-register" href="login.php">Log in</a></p>
                 <ul class="mainform-register">
-                    <div class="formgridcontainer-register">
-                        <li class="form-grid-item-register"><input type="text" name="firstname" placeholder="First name" required></li>
-                        <li class="form-grid-item-register"><input type="text" name="lastname" placeholder="Last name" required></li>
+                    <div class="form-grid-container-register-left">
+                        <li class="form-grid-item-register-1-2"><input type="text" name="firstname" placeholder="First name" required></li>
+                        <li class="form-grid-item-register-1-2"><input type="text" name="lastname" placeholder="Last name" required></li>
                     </div>
-                    <li><input type="email" name="email" placeholder="Email" required></li>
-                    <li><input type="text" name="place" placeholder="Place" required></li>
-                    <li><input type="password" name="password" placeholder="Password" required></li>
-                    <li><input type="password" name="password-repeat" placeholder="Repeat password" required></li>
-                    <li><input type="submit" value="Register" name="register"></li>
+                    <li><input class="form-grid-item-register-2-2" type="email" name="email" placeholder="Email" required></li>
+                    <div class="form-grid-container-register-left">
+                        <select name="city" id="city" class="city-register" placehol required>
+                            <option value="" disabled selected>City</option>
+                            <option value="schiplaken">Schiplaken</option>
+                            <option value="mechelen">Mechelen</option>
+                        </select>
+                        <li class="form-grid-item-register-1-2"><input type="text" name="street/number" placeholder="Street, number" required></li>
+                    </div>
+                    
+                    <li><input class="form-grid-item-register-2-2" type="password" name="password" placeholder="Password" required></li>
+                    <li><input class="form-grid-item-register-2-2" type="password" name="password-repeat" placeholder="Repeat password" required></li>
+                    <li><input type="submit" value="NEXT" name="next"></li>
                     <li class="warningtext"><?php echo $emailwarning ?></li>
                 </ul>
             </form>
