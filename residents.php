@@ -1,8 +1,8 @@
 <?php 
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
-    if(isset($_SESSION["loggedin"]) && $_SESSION["admin"] === true) {
-        $allResidents = Resident::getResident($_SESSION["place"]);
+    if(isset($_SESSION["loggedin"]) && $_SESSION["admin"] == 1) {
+        $allResidents = Resident::getResident($_SESSION["placeid"]);
     }
     else{
         header("Location: ./login.php");

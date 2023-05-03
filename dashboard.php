@@ -55,7 +55,7 @@
     <!-- feed starts here -->
     <div class="feed">
         <!-- create a new post -->
-        <?php if($_SESSION['admin'] === true): ?>
+        <?php if($_SESSION['admin'] == 1): ?>
         <div class="newpost">
             <form action="" method="post" enctype="multipart/form-data">
                 <ul>
@@ -71,7 +71,7 @@
                 </ul>
             </form>
         </div>
-        <?php elseif($_SESSION['admin'] === false): ?>
+        <?php elseif($_SESSION['admin'] == 0): ?>
         <?php endif; ?>
         <!-- show all posts -->
         <h1 class="fp-place"><?php echo $fp_place ?></h1>
