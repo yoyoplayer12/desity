@@ -13,6 +13,7 @@
             $place = $_SESSION['place-login'];
             $adress = $_SESSION['adress-login'];
             $dob = $_SESSION['dob-login'];
+            $citygroupid = $_SESSION['citygroupid'];
             $options = [
                 'cost' => 15,
             ];
@@ -22,6 +23,7 @@
                 $user->setFirstname($firstname);
                 $user->setLastname($lastname);
                 $user->setCityId($place);
+                $user->setCityGroupId($citygroupid);
                 $user->setAdress($adress);
                 $user->setPassword($password);
                 $user->setDob($dob);

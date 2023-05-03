@@ -2,6 +2,7 @@
     private string $firstname;
     private string $lastname;
     private string $cityId;
+    private string $cityGroupId;
     private string $email;
     private string $password;
     private string $profileImage;
@@ -18,6 +19,10 @@
     }
     public function setCityId($id){
         $this->cityId = $id;
+        return $this;
+    }
+    public function setCityGroupId($id){
+        $this->cityGroupId = $id;
         return $this;
     }
     public function setEmail($email){
@@ -51,11 +56,12 @@
     public function setUser(){
 		try {
 			$conn = Db::getInstance();
-            $statement = $conn->prepare("INSERT INTO users(`firstname`, `lastname`, `photo_url`, `city_id`, `adress`, `email`, `password`, `dob`) VALUES (:firstname,:lastname,:image,:cityid,:adress,:email,:password,:dob)");
+            $statement = $conn->prepare("INSERT INTO users(`firstname`, `lastname`, `photo_url`, `city_id`, `citygroup_id`, `adress`, `email`, `password`, `dob`) VALUES (:firstname,:lastname,:image,:cityid,:citygroupid,:adress,:email,:password,:dob)");
             $statement->bindValue(":firstname", $this->firstname);
             $statement->bindValue(":lastname", $this->lastname);
             $statement->bindValue(":image", $this->profileImage);
             $statement->bindValue(":cityid", $this->cityId);
+            $statement->bindValue(":citygroupid", $this->cityGroupId);
             $statement->bindValue(":adress", $this->adress);
             $statement->bindValue(":email", $this->email);
             $statement->bindValue(":password", $this->password);
@@ -80,6 +86,14 @@
     public static function findCity($cityId){
         $conn = Db::getInstance();
         $statement = $conn->prepare("SELECT * FROM city WHERE id = :id");
+        $statement->bindValue(":id", $cityId);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    public static function getUserCitygroup($cityId){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM citygroups WHERE id = :id");
         $statement->bindValue(":id", $cityId);
         $statement->execute();
         $result = $statement->fetch(PDO::FETCH_ASSOC);
