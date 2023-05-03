@@ -19,6 +19,10 @@
     font-family: 'MuseoSans-700';
     src: url('../assets/fonts/museo/MuseoSans_700.otf');
 }
+@font-face {
+    font-family: 'MuseoSans-500';
+    src: url('../assets/fonts/museo/MuseoSans_500.otf');
+}
 
 :root {    
     /* Primary colors */
@@ -339,7 +343,6 @@ select{
     display: grid;
     grid-template-columns: 7fr 4fr;
     column-gap: 112px;
-    
     background-color: rgba(255, 255, 255, 0);
     width: 100vw;
     height: 100vh;
@@ -359,10 +362,11 @@ select{
     height: 320px;
 }
 .dashcontent .rightdiv .recent-announcements{
-    background-color: rgb(121, 220, 121);
+    background-color: rgba(255, 255, 255, 0);
     width: 21.81vw;
     margin-bottom: 112px;
     height: 427px;
+    overflow: auto;
 }
 .dashcontent .rightdiv{
     position: fixed;
@@ -433,6 +437,42 @@ a.read-more-projectcard{
 div.readmore-div-projectcard{
     margin-top: 39px;
 }
+.body-medium-xl{
+    font-family: MuseoSans-500, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    line-height: 150%;
+    margin: 0;
+}
+.announcementcard{
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 4fr 36fr;
+    column-gap: 16px;
+}
+.announcementcardimg{
+    height: 40px;
+    width: 40px;
+    border-radius: 4px;
+    background-size: cover;
+
+}
+.body-small{
+    font-family: MuseoSans-300, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 150%;
+    margin: 0;
+}
+#announcementcardtext{
+    grid-column: 2/3;
+}
+
+
+
+
+
+
+
+
 
 
 

@@ -6,7 +6,7 @@
             <li><a href="projects.php" class="btn">Projects</a></li>
             <li><a href="Schedule.php" class="btn">Schedule</a></li>
             <li><a href="chat.php" class="btn">Chat</a></li>
-            <li><a href="team.php" class="btn">Team members</a></li>
+            <li><a href="people.php" class="btn">People</a></li>
         </div>
         <div class="bottompart">
             <li><a href="" class="btn">Notifications</a></li>
