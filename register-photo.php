@@ -5,23 +5,53 @@
     $user = new User();
     $allCities = [];
     $allCities = City::getCity();
-    if(isset($_POST['next'])){
-        $_SESSION['basisinfo'] = 1;
-        $_SESSION['firstname-login'] = $_POST['firstname'];
-        $_SESSION['lastname-login'] = $_POST['lastname'];
-        $_SESSION['email-login'] = $_POST['email'];
-        $_SESSION['place-login'] = $_POST['city'];
-        $_SESSION['adress-login'] = $_POST['adress'];
-        $_SESSION['password-login'] = $_POST['password'];
-        $_SESSION['dob-login'] = $_POST['date'];
-        $user->setEmail($_POST['email']);
-        if($user->getUser() === false){
-            header("Location: ./register-photo.php");
+    if(isset($_SESSION['basisinfo'])){
+        if(isset($_POST['finish'])){
+            $firstname = $_SESSION['firstname-login'];
+            $lastname = $_SESSION['lastname-login'];
+            $email = $_SESSION['email-login'];
+            $place = $_SESSION['place-login'];
+            $adress = $_SESSION['adress-login'];
+            $dob = $_SESSION['dob-login'];
+            $options = [
+                'cost' => 15,
+            ];
+            $password = password_hash($_SESSION['password-login'], PASSWORD_DEFAULT, $options);
+            $user->setEmail($email);
+            if($user->getUser() === false){
+                $user->setFirstname($firstname);
+                $user->setLastname($lastname);
+                $user->setCityId($place);
+                $user->setAdress($adress);
+                $user->setPassword($password);
+                $user->setDob($dob);
+                        
+                //fixing image
+                $randomstring = $user->getRandomStringRamdomInt();
+                $orig_file = $_FILES["avatar"]["tmp_name"];
+                $ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+                $target_dir = "assets/uploads/profiles/";
+                $destination = "$target_dir$randomstring$email.$ext";
+                move_uploaded_file($orig_file, $destination);
+                $user->setProfileImage($destination);
+                $user->setUser();
+                session_destroy();
+                header("Location: ./login.php");
+            }
+            else{
+                $emailwarning = "This email is already in use";
+                var_dump($emailwarning);
+            }
         }
-        else{
-            $emailwarning = "This email is already in use";
+        elseif(isset($_POST['back'])){
+            session_destroy();
+            header("Location: ./register.php");
         }
     }
+    else{
+        header("Location: ./register.php");
+    }
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,37 +61,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Copoll - Create an account</title>
+    <title>Copoll - Add a profile picture</title>
 </head>
 <body>
     <?php include_once(__DIR__ . "/nav.php"); ?>
-    <!-- register form -->
+    <!-- photo form -->
     <div class="signupform">
         <div class="signupform-container-input">
             <form action="" method="post" enctype="multipart/form-data">
-                <h5>GET STARTED</h5>    
-                <h1 style="margin: 0;">Create an account</h1>
-                <p class="loginbuttontext-register">Already have an account? <a class="loginbutton-register" href="login.php">Log in</a></p>
+                <h1 style="margin: 0;">Profile picture</h1>
+                <h5 style="margin-bottom: 48px;">UPLOAD A PROFILE PICTURE</h5>
                 <ul class="mainform-register">
-                    <div class="form-grid-container-register-left">
-                        <li class="form-grid-item-register-1-2"><input type="text" name="firstname" placeholder="First name" required></li>
-                        <li class="form-grid-item-register-1-2"><input type="text" name="lastname" placeholder="Last name" required></li>
+                    <div class="form-grid-container-left" style="height: 350px">
+                        <li>
+                            <label for="avatar" class="label-register" style="margin-left: 124px;" id="file-input"><input type="file" accept="image/*" id="avatar" name="avatar" class="input-register"></label>
+                            <img alt="selected image" id="selected-image" style="display: none;">
+                        </li>
                     </div>
-                    <li><input class="form-grid-item-register-2-2" type="email" name="email" placeholder="Email" required></li>
-                    <li><input type="date" name="date" id="date" placeholder="date of birth" class="form-grid-item-register-2-2" required></li>
-                    <div class="form-grid-container-register-left">
-                        <select name="city" id="city" class="dropdown-register" required>
-                            <option value="" disabled selected>Select City</option>
-                            <?php foreach($allCities as $city): ?>
-                                <option value="<?php echo $city['id']; ?>"><?php echo $city['city']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <li class="form-grid-item-register-1-2"><input type="text" name="adress" placeholder="Street, number" required></li>
-                    </div>        
-                    <li><input class="form-grid-item-register-2-2" type="password" name="password" placeholder="Password" required></li>
-                    <li><input class="form-grid-item-register-2-2" type="password" name="password-repeat" placeholder="Repeat password" required></li>
-                    <li><input type="submit" value="NEXT >" name="next" class="button-large"></li>
-                    <li class="warningtext"><?php echo $emailwarning ?></li>
+                    <div class="form-grid-container-register-left" style="margin-top: 50px">
+                        <li class="form-grid-item-register-1-2"><input type="submit" value="< BACK" name="back" class="button-large"></li>
+                        <li class="form-grid-item-register-1-2"><input type="submit" value="FINISH >" name="finish" class="button-large"></li>
+                    </div>
                 </ul>
             </form>
         </div>

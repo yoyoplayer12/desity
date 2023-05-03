@@ -11,13 +11,7 @@
         $password = $_POST['password'];
         if(canLogin($email, $password)){
             $_SESSION['loggedin'] = true;
-            if(isAdmin($email, $password)){
-                $_SESSION['admin'] = true;
-                header("Location: ./dashboard.php");
-            }
-            else{
-                header("Location: ./dashboard.php");
-            }
+            header("Location: ./dashboard.php");
         }
         else {
             $loginwarning = "Wrong password or username";
