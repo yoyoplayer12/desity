@@ -8,8 +8,8 @@
     }
     $allProjects = [];
     $allAnnouncements = [];
-    $allProjects = Project::getAllSearchingProjects();
-    $allAnnouncements = Announcement::getAllAnnouncements();
+    $allProjects = Project::getAllSearchingGroupProjects($_SESSION['citygroupid']);
+    $allAnnouncements = Announcement::getAllCitygroupAnnouncements($_SESSION['citygroupid']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +47,7 @@
                 <h4>Recent announcements</h4>
                 <?php foreach($allAnnouncements as $announcement): ?>
                     <?php $city = City::getCityById($announcement['city_id']); ?>
+                    <?php  ?>
                     <div class="announcementcard">
                         <div class="announcementcardimg" style="background-image:url(<?php echo $city['city-pic'] ?>);"></div>
                         <p class="body-medium-xl"><?php echo $city['city'] ?></p>

@@ -14,6 +14,8 @@
         $_SESSION['lastname-login'] = $_POST['lastname'];
         $_SESSION['email-login'] = $_POST['email'];
         $_SESSION['place-login'] = $_POST['city'];
+        $city = City::getCityById($_POST['city']);
+        $_SESSION['citygroupid'] = $city['citygroup_id'];
         $_SESSION['adress-login'] = $_POST['adress'];
         $_SESSION['password-login'] = $_POST['password'];
         $_SESSION['dob-login'] = $_POST['date'];

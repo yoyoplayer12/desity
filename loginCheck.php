@@ -15,6 +15,7 @@
                 $_SESSION['placeid'] = $user['city_id'];
                 $cityinfo = user::findCity($user['city_id']);
                 $_SESSION['place'] = $cityinfo['city'];
+                $_SESSION['citygroupid'] = $user['citygroup_id'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['pfpic'] = $user['photo_url'];
                 $_SESSION['admin'] = $user['admin'];
