@@ -79,8 +79,8 @@
                         </li>
                     </div>
                     <div class="form-grid-container-register-left" style="margin-top: 50px">
-                        <li class="form-grid-item-register-1-2"><input type="submit" value="< BACK" name="back" class="button-large"></li>
-                        <li class="form-grid-item-register-1-2"><input type="submit" value="FINISH >" name="finish" class="button-large"></li>
+                        <li class="form-grid-item-register-1-2"><input type="submit" value="< BACK" name="back" class="button-large-left"></li>
+                        <li class="form-grid-item-register-1-2"><input type="submit" value="FINISH >" name="finish" class="button-large-right"></li>
                     </div>
                 </ul>
             </form>

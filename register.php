@@ -5,6 +5,9 @@
     $user = new User();
     $allCities = [];
     $allCities = City::getCity();
+    if(isset($_SESSION['loggedin'])){
+        header("Location: ./dashboard.php");
+    }
     if(isset($_POST['next'])){
         $_SESSION['basisinfo'] = 1;
         $_SESSION['firstname-login'] = $_POST['firstname'];
@@ -60,7 +63,10 @@
                     </div>        
                     <li><input class="form-grid-item-register-2-2" type="password" name="password" placeholder="Password" required></li>
                     <li><input class="form-grid-item-register-2-2" type="password" name="password-repeat" placeholder="Repeat password" required></li>
-                    <li><input type="submit" value="NEXT >" name="next" class="button-large"></li>
+                    <div class="form-grid-container-register-left" style="margin-top: 36px">
+                        <li class="form-grid-item-register-1-2"><input type="" value="" name="" class="button-large-right"></li>
+                        <li class="form-grid-item-register-1-2"><input type="submit" value="NEXT >" name="next" class="button-large-right"></li>
+                    </div>
                     <li class="warningtext"><?php echo $emailwarning ?></li>
                 </ul>
             </form>

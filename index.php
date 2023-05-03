@@ -13,7 +13,7 @@
     <?php include_once(__DIR__ . "/nav.php"); ?>
     <div class="grid-container-index">
         <div class="grid-item-index">
-            <h1 class="slogan">Be heard, <br> be counted</h1>
+            <h1 class="slogan">Your voice matters, <br> let it be heard</h1>
             <p style="width: 400px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam reprehenderit sed vitae exercitationem, corrupti, unde autem culpa perferendis dignissimos consequuntur, quod temporibus nostrum odio perspiciatis eum sequi aut nihil. Esse.</p>
         </div>
         <div>
