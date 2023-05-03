@@ -167,7 +167,7 @@ nav ul li a{
 }
 a.loginbutton-register{
     font-family: MuseoSans-700, Arial, Helvetica, sans-serif;
-    color: var(--primary-green);
+    color: var(--secondary-vividian);
     font-size: 24px;
 }
 .loginbuttontext-register{
@@ -211,7 +211,7 @@ a.loginbutton-register{
 input {
     border: none;
     border-bottom: 1px solid var(--secondary-charcoal);
-    background-color: var(--neutral-whitesmoke);
+    background-color: #008cff00;
     margin-bottom: 10px;
 }
 input::placeholder{
@@ -240,11 +240,19 @@ select{
 .signupform-container-img img{
     height: 100vh;
 }
-.button-large{
+.button-large-left{
     font-family: MuseoSans-700, Arial, Helvetica, sans-serif;
     font-size: 20px;
     line-height: 150%;
     border-bottom: 0px;
+    text-align: left;
+}
+.button-large-right{
+    font-family: MuseoSans-700, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 150%;
+    border-bottom: 0px;
+    text-align: right;
 }
 .mainform-register li{
     margin-bottom: 20px;
@@ -294,7 +302,9 @@ select{
     margin-bottom: 20px;
     margin-top: 50px;
 }
-
+#charcoal{
+    color: var(--secondary-charcoal)
+}
 
 
 
@@ -374,40 +384,6 @@ a:link, a:visited, a:active{
     border-radius: 5px;
     border: none;
     margin-bottom: 10px;
-}
-.loginform{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    width: 50vw;
-    margin-left: 25vw;
-    color: var(--neutral-whitesmoke);
-    background-color: var(--neutral-frenchgray);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    margin-top: 50px;
-    padding-bottom: 40px;
-    padding-top: 20px;
-}
-.loginform input{
-    width: 100%;
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-    margin-bottom: 10px;
-}
-.loginform button{
-    width: 100%;
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-    margin-bottom: 10px;
-}
-.loginform a{
-    color: var(--neutral-whitesmoke);
-}
-.loginform a:hover{
-    text-decoration: underline;
 }
 .fp-place{
     text-align: center;
