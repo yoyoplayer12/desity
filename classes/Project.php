@@ -6,4 +6,11 @@
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    public static function getProjectById($id){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM projects WHERE id=$id AND active=1 AND deleted=0");
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

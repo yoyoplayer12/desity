@@ -1,7 +1,7 @@
 <?php class Poll{
-    public static function getMainPolls(){
+    public static function getActiveMainPolls(){
         $conn = Db::getInstance();
-        $statement = $conn->prepare("SELECT * FROM mainpoll WHERE active=1");
+        $statement = $conn->prepare("SELECT * FROM mainpoll WHERE active=1 AND startdate <= NOW() AND enddate >= NOW()");
         $statement->execute();
         return $statement->fetchAll();
     }
