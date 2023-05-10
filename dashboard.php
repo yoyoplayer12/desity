@@ -6,10 +6,7 @@
     else{
         header("Location: ./login.php");
     }
-    $allPolls = [];
-    $allProjects = [];
-    $allAnnouncements = [];
-    $allPolls = Poll::getActiveMainPolls();
+    $allPollingProjects = Project::getAllGroupActivePollingProjects($_SESSION['citygroupid']);
     $allProjects = Project::getAllSearchingGroupProjects($_SESSION['citygroupid']);
     $allAnnouncements = Announcement::getAllCitygroupAnnouncements($_SESSION['citygroupid']);
     
@@ -42,29 +39,45 @@
                 </div>
             <?php endforeach; ?>
         </div>
+
+
         <div class="rightdiv">
-            <div class="ongoing-polls">
-                <h4>Ongoing polls</h4>
-                <?php foreach($allPolls as $Poll): ?>
-                    <?php $project = Project::getProjectById($Poll['project_id']); ?>
-                    <div class="pollcard">
-                        <div class="pollcardimg" style="background-image:url(<?php echo $project['img-url'] ?>);"></div>
-                        <p class="body-medium-xl" id="pollcardtitle"><?php echo $project['title'] ?></p>
-                        <p class="body-xs" id="polldates"><?php echo $Poll['startdate']. " ° ". $Poll['enddate'] ?></p>
-                    </div>
-                <?php endforeach; ?>
+            <div class="ongoingpolls-container">
+                <div class="ongoing-polls">
+                    <h4>Ongoing polls</h4>
+                    <?php if($allPollingProjects == []):?>
+                        <p class="body-medium-xl" style="text-align: center; margin-top: 50%">There are no public pollings right now!</p>
+                    <?php else:?>
+                        <?php foreach($allPollingProjects as $Pollingproject): ?>
+                            <?php $poll = Poll::getPollbyProjectId($Pollingproject['id']);?>
+
+                            <div class="pollcard">
+                                <div class="pollcardimg" style="background-image:url(<?php echo $Pollingproject['img-url'] ?>);"></div>
+                                <p class="body-medium-xl" id="pollcardtitle"><?php echo $poll['title'] ?></p>
+                                <p class="body-xs" id="polldates"><?php echo $poll['startdate']. " ° ". $poll['enddate'] ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
             </div>
-            <div class="recent-announcements">
-                <h4>Recent announcements</h4>
-                <?php foreach($allAnnouncements as $announcement): ?>
-                    <?php $city = City::getCityById($announcement['city_id']); ?>
-                    <div class="announcementcard">
-                        <div class="announcementcardimg" style="background-image:url(<?php echo $city['city-pic'] ?>);"></div>
-                        <p class="body-medium-xl"><?php echo $city['city'] ?></p>
-                        <p class="body-small" id="announcementcardtext"><?php echo $announcement['content'] ?></p>
-                    </div>
-                <?php endforeach; ?>
+           
+
+
+
+            <div class="recentannouncements-container">
+                <div class="recent-announcements">
+                    <h4>Recent announcements</h4>
+                    <?php foreach($allAnnouncements as $announcement): ?>
+                        <?php $city = City::getCityById($announcement['city_id']); ?>
+                        <div class="announcementcard">
+                            <div class="announcementcardimg" style="background-image:url(<?php echo $city['city-pic'] ?>);"></div>
+                            <p class="body-medium-xl"><?php echo $city['city'] ?></p>
+                            <p class="body-small" id="announcementcardtext"><?php echo $announcement['content'] ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
+            
         </div>
         
     </div>

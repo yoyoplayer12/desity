@@ -360,6 +360,7 @@ select{
     background-color: rgba(255, 255, 255, 0);
     width: 21.81vw;
     height: 320px;
+    overflow: auto;
 }
 .dashcontent .rightdiv .recent-announcements{
     background-color: rgba(255, 255, 255, 0);
@@ -367,6 +368,12 @@ select{
     margin-bottom: 112px;
     height: 427px;
     overflow: auto;
+}
+.ongoingpolls-container{
+    height: 320px;
+}
+.recentannouncements-container{
+    height: 427px;
 }
 .dashcontent .rightdiv{
     position: fixed;
@@ -496,7 +503,10 @@ div.readmore-div-projectcard{
     grid-row-start: 1;
     grid-row-end: 3;
 }
-
+.form-grid-item-register-1-2 input:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 
 
