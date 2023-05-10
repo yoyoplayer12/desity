@@ -15,6 +15,30 @@
 </head>
 <body>
     <?php include_once(__DIR__ . "/navs/dashnav.php"); ?>
+    <div class="projectcontent">
+        <div class="projecttop">
+            <h4>Open projects</h4>
+           
+        </div>
+       
 
+        <div class="bottom-section">
+            <div class="ongoingpolls-container">
+                <div class="ongoing-polls">
+                    <h4>Ongoing polls</h4>
+                   
+                </div>
+            </div>
+           
+            <div class="recentannouncements-container">
+                <div class="recent-announcements">
+                    <h4>Recent announcements</h4>
+                 
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
 </body>
 </html>

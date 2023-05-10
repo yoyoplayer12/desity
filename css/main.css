@@ -507,17 +507,55 @@ div.readmore-div-projectcard{
     text-decoration: underline;
     cursor: pointer;
 }
-.subprojectnav{
+nav.dashnav div li.subprojectnav{
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--neutral-whitesmoke);
     display: -webkit-box;
     -webkit-line-clamp: 1; /* number of lines to show */
     line-clamp: 1;
     -webkit-box-orient: vertical;
+    margin-top: 12px;
+    margin-bottom: 0;
 }
-
-
-
+nav.dashnav ul li a.subproject{
+    font-size: 14px;
+}
+nav.dashnav ul li a.subproject:hover{
+    color: var(--primary-green);
+}
+.projectbox{
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    border: 1px solid var(--secondary-charcoal);
+    border-radius: 2px;
+    display: inline-block;
+}
+.projectcontent{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0);
+    padding-left: 304px;
+    padding-right: 304px;
+    padding-top: 40px;
+}
+.projecttop{
+    grid-column: 1 / span 2;
+}
+.bottom-section {
+    display: grid;
+    grid-template-columns: 752fr 448fr;
+    column-gap: 112px;
+    width: 100vw;
+    padding-left: 304px;
+    padding-right: 304px;
+    padding-top: 40px;
+  }
 
 
 
