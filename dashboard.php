@@ -53,7 +53,7 @@
                             <div class="pollcard">
                                 <div class="pollcardimg" style="background-image:url(<?php echo $Pollingproject['img-url'] ?>);"></div>
                                 <p class="body-medium-xl" id="pollcardtitle"><?php echo $poll['title'] ?></p>
-                                <p class="body-xs" id="polldates"><?php echo $poll['startdate']. " ° ". $poll['enddate'] ?></p>
+                                <p class="body-xs" id="polldates"><?php echo date('d M', strtotime($poll["startdate"])). " - ".date('d M', strtotime($poll["enddate"])) ?></p>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
