@@ -11,7 +11,7 @@
                 <?php foreach($alluserprojects as $AllProjects):?>
                     <?php $allContributingProjects = Project::getIdActiveProjects($AllProjects['project_id']); ?>
                 <ul>
-                    <li class="subprojectnav"><div class="projectbox"></div><a href="projects.php" class="subproject"><?php echo $allContributingProjects['title']?></a></li>
+                    <li class="subprojectnav"><div class="projectbox"></div><a href="projects.php?id=<?php echo $allContributingProjects['id']?>" class="subproject"><?php echo $allContributingProjects['title']?></a></li>
                 </ul>
                 <?php endforeach; ?>
         

@@ -1,6 +1,17 @@
 <?php
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
+    // $project = Project::getProjectById($_GET['id']);
+    if (isset($_GET['id'])){
+        $id = $_GET['id'];
+    }
+    else{
+        $alluserprojects = Thinker::getAllUserProjects($_SESSION['userid']);
+        $allContributingProjects = Project::getIdActiveProjects($alluserprojects[0]['project_id']);
+        $id = $allContributingProjects['id'];
+    }
+    $project = Project::getProjectById($id);
+    $allAnnouncements = Announcement::getAllProjectAnnouncements($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,23 +28,32 @@
     <?php include_once(__DIR__ . "/navs/dashnav.php"); ?>
     <div class="projectcontent">
         <div class="projecttop">
-            <h4>Open projects</h4>
-           
+            <h5 style="text-transform: uppercase"><?php echo $project['title']?></h5>
+            <?php include_once(__DIR__ . "/navs/projectnav.php"); ?>
+            <h4 style="margin-top: 32px;"><?php echo $project['summarytitle']?></h4>
+            <p class="body-normal projectsummary"><?php echo $project['summary']?></p>
         </div>
        
 
         <div class="bottom-section">
-            <div class="ongoingpolls-container">
+            <div class="upcoming-schedules-projects">
                 <div class="ongoing-polls">
-                    <h4>Ongoing polls</h4>
+                    <h5 style="margin-top: 0;">UPCOMING SCHEDULES</h4>
                    
                 </div>
             </div>
            
-            <div class="recentannouncements-container">
+            <div class="recentannouncements-projects">
                 <div class="recent-announcements">
-                    <h4>Recent announcements</h4>
-                 
+                    <h5 style="margin-top: 0;">PROJECT ANNOUNCEMENTS</h5>
+                    <?php foreach($allAnnouncements as $announcement): ?>
+                        <?php $city = City::getCityById($announcement['city_id']); ?>
+                        <div class="announcementcard">
+                            <div class="announcementcardimg" style="background-image:url(<?php echo $city['city-pic'] ?>);"></div>
+                            <p class="body-medium-xl"><?php echo $city['city'] ?></p>
+                            <p class="body-small" id="announcementcardtext"><?php echo $announcement['content'] ?></p>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             

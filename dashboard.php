@@ -39,8 +39,6 @@
                 </div>
             <?php endforeach; ?>
         </div>
-
-
         <div class="rightdiv">
             <div class="ongoingpolls-container">
                 <div class="ongoing-polls">
@@ -60,13 +58,9 @@
                     <?php endif; ?>
                 </div>
             </div>
-           
-
-
-
             <div class="recentannouncements-container">
                 <div class="recent-announcements">
-                    <h4>Recent announcements</h4>
+                    <h4>Project announcements</h4>
                     <?php foreach($allAnnouncements as $announcement): ?>
                         <?php $city = City::getCityById($announcement['city_id']); ?>
                         <div class="announcementcard">

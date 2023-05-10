@@ -20,4 +20,11 @@
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+    public static function getProjectById($id){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM projects WHERE id=$id");
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
