@@ -32,7 +32,7 @@
     <title>Copoll - Sign in</title>
 </head>
 <body>
-    <?php include_once(__DIR__ . "/nav.php"); ?>
+    <?php include_once(__DIR__ . "/navs/nav.php"); ?>
     <div class="signupform">
         <div class="signupform-container-input">
             <form action="" method="post" enctype="multipart/form-data"> 

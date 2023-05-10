@@ -39,7 +39,7 @@
     <title>Copoll - Create an account</title>
 </head>
 <body>
-    <?php include_once(__DIR__ . "/nav.php"); ?>
+    <?php include_once(__DIR__ . "/navs/nav.php"); ?>
     <!-- register form -->
     <div class="signupform">
         <div class="signupform-container-input">
