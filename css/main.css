@@ -105,6 +105,9 @@ h5{
     font-size: 24px;
     line-height: 150%;
 }
+p::first-letter, h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, h6::first-letter{
+    text-transform: uppercase;
+}
 .grid-container-index{
     display: grid;
     grid-template-columns: auto auto auto;
@@ -366,7 +369,7 @@ select{
     background-color: rgba(255, 255, 255, 0);
     width: 21.81vw;
     margin-bottom: 112px;
-    height: 427px;
+    height: 412px;
     overflow: auto;
 }
 .ongoingpolls-container{
@@ -434,6 +437,7 @@ h4{
     line-clamp: 2;
     -webkit-box-orient: vertical;
     height: 50px;
+    text-transform: uppercase;
 }
 a.read-more-projectcard{
     background-color: var(--secondary-vividian);
@@ -517,6 +521,7 @@ nav.dashnav div li.subprojectnav{
     -webkit-box-orient: vertical;
     margin-top: 12px;
     margin-bottom: 0;
+    width: 190px;
 }
 nav.dashnav ul li a.subproject{
     font-size: 14px;
@@ -542,7 +547,10 @@ nav.dashnav ul li a.subproject:hover{
     background-color: rgba(255, 255, 255, 0);
     padding-left: 304px;
     padding-right: 304px;
-    padding-top: 40px;
+}
+.projectcontent h5{
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
 .projecttop{
     grid-column: 1 / span 2;
@@ -552,10 +560,57 @@ nav.dashnav ul li a.subproject:hover{
     grid-template-columns: 752fr 448fr;
     column-gap: 112px;
     width: 100vw;
-    padding-left: 304px;
     padding-right: 304px;
     padding-top: 40px;
   }
+.upcoming-schedules-projects{
+    background-color: rgba(255, 255, 255, 0);
+    width: 41.81vw;
+    height: 375px;
+    overflow: auto;
+
+}
+.recentannouncements-projects{
+    background-color: rgba(255, 255, 255, 0);
+    width: 21.81vw;
+    height: 375px;
+    overflow: auto;
+}
+/* start projectnav */
+nav.projectnav{
+    border-bottom: var(--neutral-frenchgray) 1px solid;
+    font-family: MuseoSans-300, Arial, Helvetica, sans-serif;   
+    width: 75vw;
+
+    /* width nog bezien */
+
+
+    height: 40px;
+}
+nav.projectnav a{
+    line-height: 150%;
+    font-size: 20px;
+    color: var(--neutral-night);
+}
+nav.projectnav a:hover{
+    color: var(--primary-green);
+}
+nav.projectnav ul{
+    display: flex;
+    justify-content: left;
+    margin-top: 24px;
+}
+nav.projectnav ul li{
+    padding-right: 64px;
+}
+/* end projectnav */
+.projectsummary{
+    margin-top: 24px;
+    width: 70vw;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+
 
 
 
