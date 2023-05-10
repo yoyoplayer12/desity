@@ -609,8 +609,28 @@ nav.projectnav ul li{
     width: 70vw;
     background-color: rgba(255, 255, 255, 0);
 }
-
-
+.chat{
+    display: grid;
+    grid-template-columns: 232fr 1112fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 32px;
+    background-color: rgba(255, 255, 255, 0);
+    width: 100vw;
+    height: 100vh;
+    padding-left: 304px;
+    padding-right: 304px;
+    padding-top: 40px;
+}
+.top-chat{
+    grid-column: 1 / span 2;
+    height: 79px;
+}
+.contactbox-chat{
+    background-color: var(--neutral-frenchgray);
+}
+.chatbox-chat{
+    background-color: var(--neutral-frenchgray);
+}
 
 
 
