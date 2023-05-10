@@ -19,7 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <title>Copoll - Home</title>
+    <link rel="icon" href="assets/brand/tabicon.svg" style="height:40px" type="image/svg">
+    <title>Dashboard - Overview</title>
 </head>
 <body>
     <?php include_once(__DIR__ . "/navs/dashnav.php"); ?>
@@ -52,7 +53,7 @@
                             <div class="pollcard">
                                 <div class="pollcardimg" style="background-image:url(<?php echo $Pollingproject['img-url'] ?>);"></div>
                                 <p class="body-medium-xl" id="pollcardtitle"><?php echo $poll['title'] ?></p>
-                                <p class="body-xs" id="polldates"><?php echo $poll['startdate']. " ° ". $poll['enddate'] ?></p>
+                                <p class="body-xs" id="polldates"><?php echo date('d M', strtotime($poll["startdate"])). " - ".date('d M', strtotime($poll["enddate"])) ?></p>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>

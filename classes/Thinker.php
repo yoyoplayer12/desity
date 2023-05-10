@@ -14,4 +14,11 @@
         $statement->execute();
         return $statement->fetchAll();
     }
+    public static function getAllThinkersByProject($projectid){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM thinkers WHERE project_id=:projectid AND active=1");
+        $statement->bindValue(":projectid", $projectid);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 }

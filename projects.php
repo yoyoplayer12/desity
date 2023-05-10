@@ -1,7 +1,11 @@
 <?php
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
-    // $project = Project::getProjectById($_GET['id']);
+    if(isset($_SESSION["loggedin"])) {
+    }
+    else{
+        header("Location: ./login.php");
+    }
     if (isset($_GET['id'])){
         $id = $_GET['id'];
     }
@@ -21,8 +25,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="assets/brand/Logo-favicon-white.svg" style="height:40px" type="image/svg+xml">
-    <title>Copoll</title>
+    <link rel="icon" href="assets/brand/tabicon.svg" style="height:40px" type="image/svg">
+    <title>Dashboard - Projects</title>
 </head>
 <body>
     <?php include_once(__DIR__ . "/navs/dashnav.php"); ?>

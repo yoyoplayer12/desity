@@ -83,6 +83,14 @@
         }
         return $randomString;
     }
+    public static function getUsersById($id){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM users WHERE id=:id AND active=1 AND banned=0 AND deleted=0");
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
     public static function findCity($cityId){
         $conn = Db::getInstance();
         $statement = $conn->prepare("SELECT * FROM city WHERE id = :id");
