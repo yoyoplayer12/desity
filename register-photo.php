@@ -66,7 +66,7 @@
     <title>Copoll - Add a profile picture</title>
 </head>
 <body>
-    <?php include_once(__DIR__ . "/nav.php"); ?>
+    <?php include_once(__DIR__ . "/navs/nav.php"); ?>
     <!-- photo form -->
     <div class="signupform">
         <div class="signupform-container-input">

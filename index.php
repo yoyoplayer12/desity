@@ -10,7 +10,7 @@
     <title>Copoll</title>
 </head>
 <body>
-    <?php include_once(__DIR__ . "/nav.php"); ?>
+    <?php include_once(__DIR__ . "/navs/nav.php"); ?>
     <div class="grid-container-index">
         <div class="grid-item-index">
             <h1 class="slogan">Your voice matters, <br> let it be heard</h1>

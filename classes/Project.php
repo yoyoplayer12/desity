@@ -13,4 +13,11 @@
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    public static function getIdActiveProjects($id){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM projects WHERE active=1 AND deleted=0 AND startdate <= NOW() AND enddate >= NOW() AND id=$id ORDER BY title DESC");
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

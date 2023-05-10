@@ -22,7 +22,7 @@
     <title>Copoll - Home</title>
 </head>
 <body>
-    <?php include_once(__DIR__ . "/dashnav.php"); ?>
+    <?php include_once(__DIR__ . "/navs/dashnav.php"); ?>
     <div class="dashcontent">
         <div class="projects">
             <h4>Open projects</h4>
