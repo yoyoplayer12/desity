@@ -6,4 +6,11 @@
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    public static function getAllGroupActivePollingProjects($id){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM projects WHERE citygroup_id=$id AND active=1 AND deleted=0 and startdate <= NOW() AND enddate >= NOW() AND ispublicpolling=1 ORDER BY creationdate DESC");
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
