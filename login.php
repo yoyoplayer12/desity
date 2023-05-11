@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" href="assets/brand/tabicon.svg" style="height:40px" type="image/svg">
+    <script src="JavaScript/carrousel.js" defer></script>
     <title>Copoll - Sign in</title>
 </head>
 <body>
@@ -38,7 +39,7 @@
         <div class="signupform-container-input">
             <form action="" method="post" enctype="multipart/form-data"> 
                 <h1 style="margin: 0;">Sign in</h1>
-                <p class="loginbuttontext-register">Don't have an account yet? <a class="loginbutton-register" href="register.php">Create an account</a></p>
+                <p class="loginbuttontext-register">Dn't have an account yet? <a class="loginbutton-register" href="register.php">Create an account</a></p>
                 <ul class="mainform-register">
                     <li><input class="form-grid-item-register-2-2" type="text" name="email" placeholder="Email adress"></li>
                     <li><input class="form-grid-item-register-2-2" type="password" name="password" placeholder="Password"></li>
@@ -59,54 +60,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        var myIndex = 0;
-        carousel();
-
-        function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";  
-        }
-        myIndex++;
-        if (myIndex > x.length) {myIndex = 1}    
-        x[myIndex-1].style.display = "block";  
-        setTimeout(carousel, 10000); // Change image every 2 seconds
-        }
-
-        
-        // Get the file input element
-        const fileInput = document.getElementById('file-input');
-        // Get the image element
-        const img = document.getElementById('selected-image');
-        // Add an event listener to the file input element
-        fileInput.addEventListener('change', (event) => {
-        // Get the selected file
-        const selectedFile = event.target.files[0];
-        if (selectedFile) {
-            // A file has been selected
-            console.log('File selected:', selectedFile.name);
-            // Create a URL representing the selected file
-            const imageURL = URL.createObjectURL(selectedFile);
-            // Set the image source to the URL
-            img.src = imageURL;
-            // Show the image and hide the file input
-            img.style.display = 'block';
-            fileInput.style.display = 'none';
-        } else {
-            // No file has been selected
-            console.log('No file selected');
-            
-            // Clear the image source and hide the image
-            img.src = '';
-            img.style.display = 'none';
-            
-            // Show the file input
-            fileInput.style.display = 'block';
-        }
-        });
-</script>
 </body>
 </html>
