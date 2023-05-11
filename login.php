@@ -52,8 +52,8 @@
             </form>
         </div>
         <div class="signupform-container-img">
-            <div class="gradientcitypic"></div>
-            <div class="w3-content w3-section" style="max-width:500px">
+            <div class="gradientcitypic" style="max-width:44vw"></div>
+            <div class="w3-content w3-section" style="max-width:44vw; overflow:hidden;">
                 <?php foreach($allCities as $city): ?>
                     <img class="mySlides" src="<?php echo $city['city-pic'] ?>">
                 <?php endforeach; ?>
