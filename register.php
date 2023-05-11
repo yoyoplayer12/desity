@@ -37,6 +37,8 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" href="assets/brand/tabicon.svg" style="height:40px" type="image/svg">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="JavaScript/carrousel.js" defer></script>
     <title>Copoll - Create an account</title>
 </head>
 <body>
@@ -53,7 +55,7 @@
                         <li class="form-grid-item-register-1-2"><input type="text" name="firstname" placeholder="First name" required></li>
                         <li class="form-grid-item-register-1-2"><input type="text" name="lastname" placeholder="Last name" required></li>
                     </div>
-                    <li><input class="form-grid-item-register-2-2" type="email" name="email" placeholder="Email" required></li>
+                    <li><input class="form-grid-item-register-2-2" type="email" name="email" id="email" onkeyup="checkEmailAvailability()" placeholder="Email" required></li>
                     <li><input type="date" name="date" id="date" placeholder="date of birth" class="form-grid-item-register-2-2" required></li>
                     <div class="form-grid-container-register-left">
                         <select name="city" id="city" class="dropdown-register" required>
@@ -70,67 +72,37 @@
                         <li class="form-grid-item-register-1-2"><input type="submit" value="" name="" class="button-large-right"></li>
                         <li class="form-grid-item-register-1-2"><input type="submit" value="NEXT >" name="next" class="button-large-right"></li>
                     </div>
-                    <li class="warningtext"><?php echo $emailwarning ?></li>
+                    <li class="warningtext" id="feedback"><?php echo $emailwarning ?></li>
                 </ul>
             </form>
         </div>
         <div class="signupform-container-img">
-            <div class="gradientcitypic"></div>
-            <div class="w3-content w3-section" style="max-width:500px">
+            <div class="gradientcitypic" style="max-width:44vw"></div>
+            <div class="w3-content w3-section" style="max-width:44vw; overflow:hidden;">
                 <?php foreach($allCities as $city): ?>
                     <img class="mySlides" src="<?php echo $city['city-pic'] ?>">
                 <?php endforeach; ?>
             </div>
         </div>
     </div>
-
-    <script>
-        var myIndex = 0;
-        carousel();
-
-        function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";  
-        }
-        myIndex++;
-        if (myIndex > x.length) {myIndex = 1}    
-        x[myIndex-1].style.display = "block";  
-        setTimeout(carousel, 10000); // Change image every 2 seconds
-        }
-
-        
-        // Get the file input element
-        const fileInput = document.getElementById('file-input');
-        // Get the image element
-        const img = document.getElementById('selected-image');
-        // Add an event listener to the file input element
-        fileInput.addEventListener('change', (event) => {
-        // Get the selected file
-        const selectedFile = event.target.files[0];
-        if (selectedFile) {
-            // A file has been selected
-            console.log('File selected:', selectedFile.name);
-            // Create a URL representing the selected file
-            const imageURL = URL.createObjectURL(selectedFile);
-            // Set the image source to the URL
-            img.src = imageURL;
-            // Show the image and hide the file input
-            img.style.display = 'block';
-            fileInput.style.display = 'none';
-        } else {
-            // No file has been selected
-            console.log('No file selected');
-            
-            // Clear the image source and hide the image
-            img.src = '';
-            img.style.display = 'none';
-            
-            // Show the file input
-            fileInput.style.display = 'block';
-        }
-        });
-</script>
 </body>
+<script>
+    function checkEmailAvailability() {
+    var email = $('#email').val();
+    console.log(email);
+    $.ajax({
+        url: 'emailcheck.action.php',
+        type: 'POST',
+        data: { email: email },
+        dataType: 'json',
+        success: function(response) {
+            if (response.available) {
+                $('#feedback').text('This Email is available!').css('color', 'green');
+            } else {
+                $('#feedback').text('This account already exists').css('color', 'red');
+            }
+        }
+    });
+}
+</script>
 </html>

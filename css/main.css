@@ -193,9 +193,8 @@ nav.dashnav div.bottompart{
 .signupform{
     display: grid;
     grid-template-columns: auto auto auto;
-    padding: 10px;
-    width: 80vw;
-    margin-left: 10vw;
+    width: 100vw;
+    padding-left: 12vw;
     color: var(--neutral-night);
 }
 
@@ -512,7 +511,7 @@ div.readmore-div-projectcard{
     grid-row-start: 1;
     grid-row-end: 3;
 }
-.form-grid-item-register-1-2 input:hover{
+.form-grid-item-register-1-2 input[type=submit]:hover{
     text-decoration: underline;
     cursor: pointer;
 }
@@ -750,7 +749,9 @@ nav.projectnav ul li{
     line-clamp: 1;
     -webkit-box-orient: vertical;
 }
-
+#feedback{
+    color: red;
+}
 
 
 

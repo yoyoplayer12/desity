@@ -19,7 +19,8 @@
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['pfpic'] = $user['photo_url'];
                 $_SESSION['admin'] = $user['admin'];
-
+                $_SESSION["superadmin"] = $user["superadmin"];
+                $_SESSION["opperadmin"] = $user["opperadmin"];
                 return true;
             }
             else{

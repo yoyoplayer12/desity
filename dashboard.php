@@ -2,13 +2,13 @@
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
     if(isset($_SESSION["loggedin"])) {
+        $allPollingProjects = Project::getAllGroupActivePollingProjects($_SESSION['citygroupid']);
+        $allProjects = Project::getAllSearchingGroupProjects($_SESSION['citygroupid']);
+        $allAnnouncements = Announcement::getAllCitygroupAnnouncements($_SESSION['citygroupid']);
     }
     else{
         header("Location: ./login.php");
     }
-    $allPollingProjects = Project::getAllGroupActivePollingProjects($_SESSION['citygroupid']);
-    $allProjects = Project::getAllSearchingGroupProjects($_SESSION['citygroupid']);
-    $allAnnouncements = Announcement::getAllCitygroupAnnouncements($_SESSION['citygroupid']);
     
 ?>
 <!DOCTYPE html>
