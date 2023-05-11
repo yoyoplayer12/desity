@@ -39,7 +39,7 @@
         <div class="signupform-container-input">
             <form action="" method="post" enctype="multipart/form-data"> 
                 <h1 style="margin: 0;">Sign in</h1>
-                <p class="loginbuttontext-register">Dn't have an account yet? <a class="loginbutton-register" href="register.php">Create an account</a></p>
+                <p class="loginbuttontext-register">Don't have an account yet? <a class="loginbutton-register" href="register.php">Create an account</a></p>
                 <ul class="mainform-register">
                     <li><input class="form-grid-item-register-2-2" type="text" name="email" placeholder="Email adress"></li>
                     <li><input class="form-grid-item-register-2-2" type="password" name="password" placeholder="Password"></li>

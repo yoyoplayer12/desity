@@ -511,7 +511,7 @@ div.readmore-div-projectcard{
     grid-row-start: 1;
     grid-row-end: 3;
 }
-.form-grid-item-register-1-2 input:hover{
+.form-grid-item-register-1-2 input[type=submit]:hover{
     text-decoration: underline;
     cursor: pointer;
 }
@@ -749,7 +749,9 @@ nav.projectnav ul li{
     line-clamp: 1;
     -webkit-box-orient: vertical;
 }
-
+#feedback{
+    color: red;
+}
 
 
 
