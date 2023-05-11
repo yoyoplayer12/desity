@@ -17,3 +17,21 @@ checken of het messaging systeem volledig veilig is
     - Ads
     - sponsors
     - subscription + een aanmoediging bvb filmtickets
+
+
+
+
+
+
+    miniadmin:
+
+    - add citygroup
+        - add city
+            - add admin
+            - add superadmin
+            - add opperadmin
+            - add project
+                - add thinker
+                - add poll
+            - add announcement
+    - edit and delete same thing
