@@ -1,9 +1,11 @@
 <?php
     include_once(__DIR__ . "/bootstrap.php");
     include_once(__DIR__ . "/loginCheck.php");
+    require_once(__DIR__ . '/vendor/autoload.php');
+    use Cloudinary\Cloudinary;
     if (isset($_SESSION["loggedin"])) {
         if ($_SESSION["opperadmin"] == 1){
-            
+            $config = parse_ini_file("config/config.ini");
         }
         else{
             header("Location: ./dashboard.php");
@@ -26,38 +28,47 @@
             
         }
         elseif(isset($_POST['submit-city'])){
-            $newcity = new City();
-            $city = $_POST['city'];
-            $city = strip_tags($city);
-            $city = htmlspecialchars($city);
-            $city = strtolower($city);
-            $city = preg_replace('/\s+/', '-', $city);
-            $city = preg_replace('/[^A-Za-z0-9\-]/', '-', $city);
-            $newcity->setName($city);
+            if(isset($_POST['city'])){
+                $newcity = new City();
+                $city = $_POST['city'];
+                $city = strip_tags($city);
+                $city = htmlspecialchars($city);
+                $city = strtolower($city);
+                $city = preg_replace('/\s+/', '-', $city);
+                $city = preg_replace('/[^A-Za-z0-9\-]/', '-', $city);
+                $newcity->setName($city);
 
+                // upload city pic here
+                // $randomstring = $newcity->getRandomStringRamdomInt();
 
-            
-// This needs fixing
+                // $cloudinary = new Cloudinary(
+                //     [
+                //         'cloud' => [
+                //             'cloud_name' => $config["cloudname"],
+                //             'api_key'    => $config["apikey"],
+                //             'api_secret' => $config["apisecret"],
+                //         ],
+                //     ]
+                // );
+                // $cloudinary->uploadApi()->upload(
+                //     $_FILES['citypic']['tmp_name'],
+                //     ['public_id' => "assets/cities/".$randomstring], // optional
+                //     // ['width' => 100, 'height' => 150, 'crop' => 'fill'] // cropping
+                // );
+                $upload = new Image();
+                $upload->setup();
+                $upload->upload("assets", "cities", "citypic");
+                $randomstring = $upload->getString();
 
-            // set city pic here
-            $randomstring = $newcity->getRandomStringRamdomInt();
-            $orig_file = $_FILES["citypic"]["tmp_name"];
-            $ext = pathinfo($_FILES["citypic"]["name"], PATHINFO_EXTENSION);
-            $target_dir = "assets/uploads/cities/";
-            $destination = "$target_dir$randomstring$city.$ext";
-            // move_uploaded_file($orig_file, $destination);
-            $newcity->setCityPic($destination);
-            var_dump($destination);
-            $newcity->setCityGroupId($_POST['groupid']);
-            die();
-            $newcity->save();
-
-
-// This needs fixing
-
-
-
-
+                $destination = "assets/cities/".$randomstring.".jpg";
+                // set in db
+                $newcity->setCityPic($destination);
+                $newcity->setCityGroupId($_POST['groupid']);               
+                $newcity->save();
+            }
+            else{
+                echo "Please fill in all fields";
+            }
         }
     }
 
@@ -105,9 +116,9 @@
                         <?php endforeach; ?>
                     </ol>
                 <?php endif; ?>
-                <form action="" method="post" style="width:200px;margin-top:50px;">
+                <form action="" method="post" style="width:200px;margin-top:50px;" enctype="multipart/form-data">
                     <input type="text" name="city" placeholder="New city" style="border:1px solid black;border-radius:4px;">
-                    <input type="file" accept="image/*" name="citypic" style="border:none;cursor:pointer;">
+                    <input type="file" accept="image/*" name="citypic" id="citypic" style="border:none;cursor:pointer;">
                     <!-- not safe, but works for us -->
                     <input type="hidden" name="groupid" value="<?php echo $citygroup['id'] ?>">
                     <!-- not safe, but works for us -->

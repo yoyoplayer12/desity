@@ -53,6 +53,8 @@
     else{
         header("Location: ./register.php");
     }
+    $image = new Image();
+    $url = $image->getUrl()
    
 ?>
 <!DOCTYPE html>
@@ -94,7 +96,7 @@
             <div class="gradientcitypic" style="max-width:44vw"></div>
             <div class="w3-content w3-section" style="max-width:44vw; overflow:hidden;">
                 <?php foreach($allCities as $city): ?>
-                    <img class="mySlides" src="<?php echo $city['city-pic'] ?>">
+                    <img class="mySlides" src="<?php echo $url.$city['city-pic'] ?>">
                 <?php endforeach; ?>
             </div>
         </div>
