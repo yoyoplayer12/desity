@@ -1,13 +1,10 @@
 # copoll
 
+Setting up coding environment:
 
-making superadmin:
+(tested with php 8.2):
 
-
-making new city:
-
-- if group excists:
-    - create city and add to excisting group
-- else:
-    - create new group
-    - create new city and add to group
+1. connect git 
+2. composer require cloudinary/cloudinary_php
+3. add config/config.ini
+4. add keys in config
