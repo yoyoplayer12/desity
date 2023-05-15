@@ -2,7 +2,6 @@
     include_once(__DIR__ . "/bootstrap.php");
     include_once(__DIR__ . "/loginCheck.php");
     require_once(__DIR__ . '/vendor/autoload.php');
-    use Cloudinary\Cloudinary;
     if (isset($_SESSION["loggedin"])) {
         if ($_SESSION["opperadmin"] == 1){
             $config = parse_ini_file("config/config.ini");
@@ -37,24 +36,6 @@
                 $city = preg_replace('/\s+/', '-', $city);
                 $city = preg_replace('/[^A-Za-z0-9\-]/', '-', $city);
                 $newcity->setName($city);
-
-                // upload city pic here
-                // $randomstring = $newcity->getRandomStringRamdomInt();
-
-                // $cloudinary = new Cloudinary(
-                //     [
-                //         'cloud' => [
-                //             'cloud_name' => $config["cloudname"],
-                //             'api_key'    => $config["apikey"],
-                //             'api_secret' => $config["apisecret"],
-                //         ],
-                //     ]
-                // );
-                // $cloudinary->uploadApi()->upload(
-                //     $_FILES['citypic']['tmp_name'],
-                //     ['public_id' => "assets/cities/".$randomstring], // optional
-                //     // ['width' => 100, 'height' => 150, 'crop' => 'fill'] // cropping
-                // );
                 $upload = new Image();
                 $upload->setup();
                 $upload->upload("assets", "cities", "citypic");

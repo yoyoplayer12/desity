@@ -31,11 +31,11 @@
                 ]
             );
         }
-        public function upload($assetspublic, $folder, $id){
+        public function upload($assetspublic, $folder, $idtag){
             $randomstring = self::getRandomStringRamdomInt();
             $this->string = $randomstring;
             $this->cloudinary->uploadApi()->upload(
-                $_FILES[$id]['tmp_name'],
+                $_FILES[$idtag]['tmp_name'],
                 ['public_id' => "$assetspublic"."/".$folder."/".$randomstring], // optional
                 // ['width' => 100, 'height' => 150, 'crop' => 'fill'] // cropping
             );
