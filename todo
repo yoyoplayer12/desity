@@ -39,3 +39,18 @@ checken of het messaging systeem volledig veilig is
     - edit and delete same thing
 
     https://res.cloudinary.com/de4kuz3ws/image/upload/v1/map/file ==> the way to get images
+
+
+
+
+
+    making superadmin:
+
+
+making new city:
+
+- if group exists:
+    - create city and add to excisting group
+- else:
+    - create new group
+    - create new city and add to group
