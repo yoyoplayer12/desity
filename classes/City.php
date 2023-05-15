@@ -31,7 +31,7 @@
     }
     public function save(){
         $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO city(`cityGroupId`, `city`, `city-pic`) VALUES(:groupid, :name, :citypic)");
+        $statement = $conn->prepare("INSERT INTO city(`citygroup_id`, `city`, `city-pic`) VALUES(:groupid, :name, :citypic)");
         $statement->bindValue(":name", $this->name);
         $statement->bindValue(":citypic", $this->cityPic);
         $statement->bindValue(":groupid", $this->cityGroupId);

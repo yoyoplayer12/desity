@@ -9,7 +9,8 @@
     else{
         header("Location: ./login.php");
     }
-    
+    $image = new Image();
+    $url = $image->getUrl()
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +66,7 @@
                     <?php foreach($allAnnouncements as $announcement): ?>
                         <?php $city = City::getCityById($announcement['city_id']); ?>
                         <div class="announcementcard">
-                            <div class="announcementcardimg" style="background-image:url(<?php echo $city['city-pic'] ?>);"></div>
+                            <div class="announcementcardimg" style="background-image:url(<?php echo $url.$city['city-pic'] ?>);"></div>
                             <p class="body-medium-xl"><?php echo $city['city'] ?></p>
                             <p class="body-small" id="announcementcardtext"><?php echo $announcement['content'] ?></p>
                         </div>

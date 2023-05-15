@@ -5,6 +5,8 @@ Index.php
     - fix likes bij comments + comments to comments
     - fix "posted zo veel minutes ago"
     - fix postsysteem ==> is kapot
+    - fix de titels da meescrollen
+
 
 checken of het messaging systeem volledig veilig is
 
@@ -35,3 +37,5 @@ checken of het messaging systeem volledig veilig is
                 - add poll
             - add announcement
     - edit and delete same thing
+
+    https://res.cloudinary.com/de4kuz3ws/image/upload/v1/map/file ==> the way to get images
