@@ -1,6 +1,7 @@
 <?php
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
+    require_once(__DIR__ . '/vendor/autoload.php');
     $emailwarning = " ";
     $user = new User();
     $allCities = [];
@@ -29,12 +30,12 @@
                 $user->setDob($dob);
                         
                 //fixing image
-                $randomstring = $user->getRandomStringRamdomInt();
-                $orig_file = $_FILES["avatar"]["tmp_name"];
-                $ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
-                $target_dir = "assets/uploads/profiles/";
-                $destination = "$target_dir$randomstring$email.$ext";
-                move_uploaded_file($orig_file, $destination);
+                $image = new Image();
+                $image->setup();
+                $image->upload("public", "profiles", "avatar");
+                $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+                $randomstring = $image->getString();
+                $destination = "public/profiles/".$randomstring.$ext;
                 $user->setProfileImage($destination);
                 $user->setUser();
                 session_destroy();
