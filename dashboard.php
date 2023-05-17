@@ -10,7 +10,7 @@
         header("Location: ./login.php");
     }
     $image = new Image();
-    $url = $image->getUrl()
+    $url = $image->getUrl();
 ?>
 <!DOCTYPE html>
 <html lang="en">

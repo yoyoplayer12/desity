@@ -10,18 +10,18 @@ $statement->bindValue(":pid", $_GET['pid']);
 $statement->execute();
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 $html = '';
+$image = new Image();
+$url = $image->getUrl();
 foreach ($results as $result) {
     $sender = $result['sender_id'];
+    $user = User::getUsersById($sender);
+    $avatar = $url.$user['photo_url'];
+    $firstname = $user['firstname'];
+    $lastname = $user['lastname'];
     $text = $result['content'];
     $timestamp = $result['senddate'];
     $time = date('d M Y', strtotime($timestamp))." at ".date('H:i', strtotime($timestamp));
-    $selectedprojectid = $_SESSION['selectedid'];
     
-    $user = User::getUsersById($sender);
-
-    $firstname = $user['firstname'];
-    $lastname = $user['lastname'];
-    $avatar = $user['photo_url'];
     if($user['admin'] == 1){
         $html .= "
         <div class='chatmessage-chat-me'>
