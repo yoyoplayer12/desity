@@ -27,6 +27,14 @@
         }
     }
     else{
+        $firstprojectid = Project::getFirstUserProjectId($_SESSION['userid']);
+        if($firstprojectid == ""){
+        }
+        else{
+            $id = $firstprojectid['id'];
+            header("Location: chat.php?pid=$id");
+        }
+        
     }
     $image = new Image();
     $url = $image->getUrl();
@@ -50,7 +58,11 @@
         <?php if(isset($selectedid)): ?>
             <?php if($selectedid == $_GET['pid']): ?>
                 <?php $project = Project::getIdActiveProject($selectedid); ?>
-                <h5 style="text-transform: uppercase">CHAT: <?php echo $project['title'] ?></h5>
+                <?php if($project == ""): ?>
+                    <h5>CHAT</h5>
+                <?php else: ?>
+                    <h5 style="text-transform: uppercase">CHAT: <?php echo $project['title'] ?></h5>
+                <?php endif; ?>
             <?php elseif($selectedid == $_GET['id'] ): ?>
                 <!-- for pms -->
             <?php endif;?>

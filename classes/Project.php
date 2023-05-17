@@ -27,4 +27,12 @@
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+    public static function getFirstUserProjectId($userid){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM projects WHERE id IN (SELECT project_id from thinkers WHERE user_id=:userid AND active=1) AND active=1 AND deleted=0 ORDER BY creationdate DESC LIMIT 1");
+        $statement->bindValue(":userid", $userid);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
