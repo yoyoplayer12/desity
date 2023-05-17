@@ -760,7 +760,10 @@ nav.projectnav ul li{
 #feedback{
     color: red;
 }
-
+.selected-chat{
+    background-color: var(--primary-green-200);
+    border-radius: 4px;
+}
 
 
 

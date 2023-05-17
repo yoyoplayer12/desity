@@ -6,7 +6,7 @@
     else{
         header("Location: ./login.php");
     }
-    $allthinkerprojects = Thinker::getAllUserProjects($_SESSION['userid']);
+    $allthinkerprojects = Thinker::getAllActiveUserProjects($_SESSION['userid']);
     if (isset($_GET['id'])) {
         //nog beveiligen
         $selectedid = $_GET['id'];
@@ -49,7 +49,7 @@
         <div class="top-chat">
         <?php if(isset($selectedid)): ?>
             <?php if($selectedid == $_GET['pid']): ?>
-                <?php $project = Project::selectProjectById($selectedid); ?>
+                <?php $project = Project::getIdActiveProject($selectedid); ?>
                 <h5 style="text-transform: uppercase">CHAT: <?php echo $project['title'] ?></h5>
             <?php elseif($selectedid == $_GET['id'] ): ?>
                 <!-- for pms -->
@@ -62,13 +62,44 @@
             <input type="text" placeholder="Search" class="chatsearch">
             <div class="contacts-chat">
                 <p class="body-small contacttitle">Projects</p>
-                <?php foreach($allthinkerprojects as $ids): ?>
-                    <?php $project = Project::getProjectById($ids['project_id']); ?>
-                    <a class="user-chat" href="chat.php?pid=<?php echo $project["id"]?>">
-                        <div class="user-image-chat" style="background-image: url(<?php echo $url.$project['img-url'] ?>);"></div>
-                        <div class="titlecontainer-chat"><p class="body-normal"><?php echo $project['title'] ?></p></div>
-                        <p class="body-xs lastmessage">laatste bericht</p>
-                    </a>
+                <?php foreach($allthinkerprojects as $project): ?>
+                    <?php $lastmessage = Message::getLastMessageByProject($project['id']) ?>
+                    <?php if(isset($lastmessage['content'])): ?>
+                        <?php $dots = strlen($lastmessage['content']) > 20 ? "..." : "" ?>
+                    <?php endif; ?>
+                    <?php if(isset($_GET['pid'])): ?>
+                        <?php if($_GET['pid'] == $project["id"]): ?>
+                            <a class="user-chat selected-chat" href="chat.php?pid=<?php echo $project["id"]?>">
+                                <div class="user-image-chat" style="background-image: url(<?php echo $url.$project['img-url'] ?>);"></div>
+                                <div class="titlecontainer-chat"><p class="body-normal"><?php echo $project['title'] ?></p></div>
+                                <?php if(isset($lastmessage['content'])): ?>
+                                    <p class="body-xs lastmessage"><?php echo substr($lastmessage['content'], 0, 20).$dots ?></p>
+                                <?php else: ?>
+                                    <p class="body-xs lastmessage">No messages yet</p>
+                                <?php endif; ?>
+                            </a>
+                        <?php else: ?>
+                            <a class="user-chat" href="chat.php?pid=<?php echo $project["id"]?>">
+                                <div class="user-image-chat" style="background-image: url(<?php echo $url.$project['img-url'] ?>);"></div>
+                                <div class="titlecontainer-chat"><p class="body-normal"><?php echo $project['title'] ?></p></div>
+                                <?php if(isset($lastmessage['content'])): ?>
+                                    <p class="body-xs lastmessage"><?php echo substr($lastmessage['content'], 0, 20).$dots ?></p>
+                                <?php else: ?>
+                                    <p class="body-xs lastmessage">No messages yet</p>
+                                <?php endif; ?>
+                            </a>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <a class="user-chat" href="chat.php?pid=<?php echo $project["id"]?>">
+                            <div class="user-image-chat" style="background-image: url(<?php echo $url.$project['img-url'] ?>);"></div>
+                            <div class="titlecontainer-chat"><p class="body-normal"><?php echo $project['title'] ?></p></div>
+                            <?php if(isset($lastmessage['content'])): ?>
+                                <p class="body-xs lastmessage"><?php echo substr($lastmessage['content'], 0, 20).$dots ?></p>
+                            <?php else: ?>
+                                <p class="body-xs lastmessage">No messages yet</p>
+                            <?php endif; ?>
+                        </a>
+                    <?php endif; ?>
                 <?php endforeach; ?>
                 <p class="body-small contacttitle">Personal messages</p>
             </div>

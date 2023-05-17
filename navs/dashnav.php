@@ -9,7 +9,7 @@
             <li>
                 <a href="projects.php" class="btn">Projects</a>
                 <?php foreach($alluserprojects as $AllProjects):?>
-                    <?php $allContributingProjects = Project::getIdActiveProjects($AllProjects['project_id']); ?>
+                    <?php $allContributingProjects = Project::getIdActiveProject($AllProjects['project_id']); ?>
                 <ul>
                     <li class="subprojectnav"><div class="projectbox"></div><a href="projects.php?id=<?php echo $allContributingProjects['id']?>" class="subproject"><?php echo $allContributingProjects['title']?></a></li>
                 </ul>
