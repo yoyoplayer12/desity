@@ -21,4 +21,11 @@
         $statement->execute();
         return $statement->fetchAll();
     }
+    public static function getAllActiveUserProjects($userid){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM projects WHERE id IN (SELECT project_id from thinkers WHERE user_id=:userid AND active=1) AND active=1 AND deleted=0");
+        $statement->bindValue(":userid", $userid);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 }

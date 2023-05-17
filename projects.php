@@ -7,11 +7,13 @@
         header("Location: ./login.php");
     }
     if (isset($_GET['id'])){
+        //beveiligen
         $id = $_GET['id'];
+        //beveiligen
     }
     else{
         $alluserprojects = Thinker::getAllUserProjects($_SESSION['userid']);
-        $allContributingProjects = Project::getIdActiveProjects($alluserprojects[0]['project_id']);
+        $allContributingProjects = Project::getIdActiveProject($alluserprojects[0]['project_id']);
         $id = $allContributingProjects['id'];
     }
     $project = Project::getProjectById($id);
