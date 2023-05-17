@@ -54,3 +54,7 @@ making new city:
 - else:
     - create new group
     - create new city and add to group
+
+
+
+fix login ==> only clicking on next works

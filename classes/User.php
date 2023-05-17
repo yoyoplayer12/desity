@@ -107,4 +107,11 @@
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+    public static function getProjectAdmins($projectthinkers){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM users WHERE id = $projectthinkers AND admin=1 AND active=1 AND banned=0 AND deleted=0");
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
