@@ -27,6 +27,14 @@
         }
     }
     else{
+        $firstprojectid = Project::getFirstUserProjectId($_SESSION['userid']);
+        if($firstprojectid == ""){
+        }
+        else{
+            $id = $firstprojectid['id'];
+            header("Location: chat.php?pid=$id");
+        }
+        
     }
     $image = new Image();
     $url = $image->getUrl();
