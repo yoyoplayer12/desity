@@ -14,8 +14,7 @@ foreach ($results as $result) {
     $text = $result['content'];
     $timestamp = $result['senddate'];
 
-    $html .= "<div>$text</div>";
-    // $html .= "<?php include_once(__DIR__ . '/components/dashnav.php');";
+    $html .= "<div><strong>$sender:</strong> $text <span class='timestamp'>$timestamp</span></div>";
 }
 
 // Echo the HTML content

@@ -87,94 +87,95 @@
 
                     <!-- personal messages -->
 
-        <?php if(isset($_GET["id"]) && isset($selectedid)): ?>
-            <?php foreach($allusermessages as $message): ?>
-                <?php $sender = User::getUsersById($message['sender_id']) ?>
+            <?php if(isset($_GET["id"]) && isset($selectedid)): ?>
+                <?php foreach($allusermessages as $message): ?>
+                    <?php $sender = User::getUsersById($message['sender_id']) ?>
 
-                    <!-- Your messages -->
-                    <?php if($message['sender_id'] == $_SESSION['userid'] && $message['receiver_id'] == $selectedid): ?>
-                        <div class="chatmessage-chat-me">
+                        <!-- Your messages -->
+                        <?php if($message['sender_id'] == $_SESSION['userid'] && $message['receiver_id'] == $selectedid): ?>
+                            <div class="chatmessage-chat-me">
+                                <div class="pic-chat" style="background-image: url('<?php echo $sender['photo_url'] ?>');"></div>
+                                <div class="nametag-chat" style="margin-left: 16px;">
+                                    <?php if($sender['admin'] == 1): ?>
+                                        <p class="body-bold-Large adminchat" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
+                                        <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
+                                    <?php else: ?>
+                                        <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
+                                        <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
+                                    <?php endif; ?>
+                                    <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
+                                </div>
+                                
+                            </div>
+                        
+                        <!-- Other people's messages -->
+                        <?php elseif($message['receiver_id'] == $_SESSION['userid'] && $message['sender_id'] == $selectedid):?>
+                        <div class="chatmessage-chat-other">
                             <div class="pic-chat" style="background-image: url('<?php echo $sender['photo_url'] ?>');"></div>
                             <div class="nametag-chat" style="margin-left: 16px;">
-                                <?php if($sender['admin'] == 1): ?>
-                                    <p class="body-bold-Large adminchat" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                    <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                <?php else: ?>
-                                    <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                    <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                <?php endif; ?>
-                                <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
-                            </div>
-                            
+                                    <?php if($sender['admin'] == 1): ?>
+                                        <p class="body-bold-Large adminchat" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
+                                        <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
+                                    <?php else: ?>
+                                        <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
+                                        <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
+                                    <?php endif; ?>
+                                    <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
+                                </div>
                         </div>
-                    
-                    <!-- Other people's messages -->
-                    <?php elseif($message['receiver_id'] == $_SESSION['userid'] && $message['sender_id'] == $selectedid):?>
-                    <div class="chatmessage-chat-other">
-                        <div class="pic-chat" style="background-image: url('<?php echo $sender['photo_url'] ?>');"></div>
-                        <div class="nametag-chat" style="margin-left: 16px;">
-                                <?php if($sender['admin'] == 1): ?>
-                                    <p class="body-bold-Large adminchat" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                    <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                <?php else: ?>
-                                    <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                    <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                <?php endif; ?>
-                                <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
-                            </div>
-                    </div>
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
 
-                                    <!-- group messages -->
+                                        <!-- group messages -->
 
-        <?php elseif(isset($_GET["pid"]) && isset($selectedid)): ?>
-            <?php $allgroupmessages = Message::getMessagesByProject($_GET['pid']);?>
-            <?php foreach($allgroupmessages as $message):?>
-                <?php $sender = User::getUsersById($message['sender_id']) ?>
-                    <!-- Your messages -->
-                <?php if($message['sender_id'] == $_SESSION['userid'] && $message['project_id'] == $selectedid): ?>
-                    <div class="chatmessage-chat-me">
-                        <div class="pic-chat" style="background-image: url('<?php echo $sender['photo_url'] ?>');"></div>
-                        <div class="nametag-chat" style="margin-left: 16px;">
-                            <?php if($sender['admin'] == 1): ?>
-                            <p class="body-bold-Large adminchat" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                            <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                            <?php else: ?>
-                                <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                            <?php endif; ?>
-                            <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
-                        </div>            
-                    </div>
-                    <!-- Other people's messages -->
-                    <?php elseif($message['project_id'] == $selectedid):?>
-                        <div class="chatmessage-chat-other">
+            <?php elseif(isset($_GET["pid"]) && isset($selectedid)): ?>
+                <?php $allgroupmessages = Message::getMessagesByProject($_GET['pid']);?>
+                <?php foreach($allgroupmessages as $message):?>
+                    <?php $sender = User::getUsersById($message['sender_id']) ?>
+                        <!-- Your messages -->
+                    <?php if($message['sender_id'] == $_SESSION['userid'] && $message['project_id'] == $selectedid): ?>
+                        <div class="chatmessage-chat-me">
                             <div class="pic-chat" style="background-image: url('<?php echo $sender['photo_url'] ?>');"></div>
                             <div class="nametag-chat" style="margin-left: 16px;">
                                 <?php if($sender['admin'] == 1): ?>
                                 <p class="body-bold-Large adminchat" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
                                 <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
                                 <?php else: ?>
-                                <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
+                                    <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
+                                    <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
                                 <?php endif; ?>
-                                <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
-                            </div>
+                                <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="<?php echo $message['id'] ?>"></p>
+                            </div>            
                         </div>
-                    <?php endif; ?>
-            <?php endforeach; ?>
-        <?php else: ?>
-                <!-- no message -->
-        <?php endif; ?>
+                        <!-- Other people's messages -->
+                        <?php elseif($message['project_id'] == $selectedid):?>
+                            <div class="chatmessage-chat-other">
+                                <div class="pic-chat" style="background-image: url('<?php echo $sender['photo_url'] ?>');"></div>
+                                <div class="nametag-chat" style="margin-left: 16px;">
+                                    <?php if($sender['admin'] == 1): ?>
+                                    <p class="body-bold-Large adminchat" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
+                                    <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
+                                    <?php else: ?>
+                                    <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
+                                    <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
+                                    <?php endif; ?>
+                                    <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="<?php echo $message['id'] ?>"></p>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                    <!-- no message -->
+            <?php endif; ?>
         </div>
+        
         <div class="sendpart">
-        <?php if(isset($selectedid)): ?>
-            <form action="" method="post">
-                <input type="text" name="text" class="send-chat" placeholder="Aa"></input>
-                <input type="submit" value=">" name="send" class="send">
-            </form>
-        <?php endif; ?>
+            <?php if(isset($selectedid)): ?>
+                <form action="" method="post">
+                    <input type="text" name="text" class="send-chat" placeholder="Aa"></input>
+                    <input type="submit" value=">" name="send" class="send">
+                </form>
+            <?php endif; ?>
         </div>
     </div>
 </body>
@@ -183,11 +184,11 @@
         // Function to fetch and display the chat messages
         function fetchChatMessages() {
             $.ajax({
-                url: 'ajax/fetch_messages.action.php',
+                url: 'ajax/fetch_messages.action.php?mid=<?php echo $messageid ?>',
                 method: 'GET',
                 success: function(response) {
-                    $('#chat-messages').html(response);
-                    console.log($('#chat-messages').html(response));
+                    $('#<?php echo $messageid ?>').html(response);
+                    console.log($('#<?php echo $messageid ?>').html(response));
                 }
             });
         }
@@ -231,5 +232,5 @@
         }, 5000); // Adjust the interval as needed
     });
 
-    </script>
+</script>
 </html>
