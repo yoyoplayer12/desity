@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . "/bootstrap.php");
+    include_once( "bootstrap.php");
     // get input from AJAX request
     $email = $_POST['email'];
     // check if username already exists in database
