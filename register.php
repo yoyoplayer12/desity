@@ -1,5 +1,5 @@
 <?php
-    ini_set('display_errors', 1);
+    // ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
     $emailwarning = " ";
     $user = new User();
@@ -38,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="assets/brand/tabicon.svg" style="height:40px" type="image/svg">
+    <link rel="icon" href="<?php echo $url."assets/brand/ppyo2h0le7ysvsembls6" ?>" style="height:40px" type="image/svg">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
     <script src="JavaScript/carrousel.js" defer></script>
     <title>Copoll - Create an account</title>
@@ -48,7 +48,7 @@
     <!-- register form -->
     <div class="signupform">
         <div class="signupform-container-input">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="" name="next" method="post" enctype="multipart/form-data">
                 <h5>GET STARTED</h5>    
                 <h1 style="margin: 0;">Create an account</h1>
                 <p class="loginbuttontext-register">Already have an account? <a class="loginbutton-register" href="login.php">Log in</a></p>
@@ -71,7 +71,7 @@
                     <li><input class="form-grid-item-register-2-2" type="password" name="password" placeholder="Password" required></li>
                     <li><input class="form-grid-item-register-2-2" type="password" name="password-repeat" placeholder="Repeat password" required></li>
                     <div class="form-grid-container-register-left" style="margin-top: 36px">
-                        <li class="form-grid-item-register-1-2"><input type="submit" value="" name="" class="button-large-right"></li>
+                        <li class="form-grid-item-register-1-2"><input type="button" value="" name="" class="button-large-right"></li>
                         <li class="form-grid-item-register-1-2"><input type="submit" value="NEXT >" name="next" class="button-large-right"></li>
                     </div>
                     <li class="warningtext" id="feedback"><?php echo $emailwarning ?></li>
@@ -93,7 +93,7 @@
     var email = $('#email').val();
     console.log(email);
     $.ajax({
-        url: './emailcheck.action.php',
+        url: 'emailcheck.action.php',
         type: 'POST',
         data: { email: email },
         dataType: 'json',

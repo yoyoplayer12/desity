@@ -1,9 +1,11 @@
 <?php
     $alluserprojects = Thinker::getAllUserProjects($_SESSION['userid']);
+    $image = new Image();
+    $url = $image->getUrl();
 ?>
 <nav class="dashnav">
     <ul>
-        <li><a href="index.php"><img class="navlogo" src="assets/brand/logo-horizontal-white.svg" alt="Copoll logo" style="height: 40px; margin: 16px"></a></li>
+        <li><a href="index.php"><img class="navlogo" src="<?php echo $url."assets/brand/mc58pu4mvo7bxotb5mcx.svg" ?>" alt="Copoll logo" style="height: 40px; margin: 16px"></a></li>
         <div class="toppart">
             <li><a href="dashboard.php" class="btn">Dashboard</a></li>
             <li>

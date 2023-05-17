@@ -1,5 +1,5 @@
 <?php
-    ini_set('display_errors', 1);
+    // ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
     require_once(__DIR__ . '/vendor/autoload.php');
     $emailwarning = " ";
@@ -66,7 +66,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="assets/brand/tabicon.svg" style="height:40px" type="image/svg">
+    <link rel="icon" href="<?php echo $url."assets/brand/ppyo2h0le7ysvsembls6" ?>" style="height:40px" type="image/svg">
     <script src="JavaScript/carrousel.js" defer></script>
     <script src="JavaScript/registerimage.js" defer></script>
     <title>Copoll - Add a profile picture</title>

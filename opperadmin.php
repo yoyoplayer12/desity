@@ -1,17 +1,6 @@
 <?php
     include_once(__DIR__ . "/bootstrap.php");
-
-
-
-
-    //?
     include_once(__DIR__ . "/loginCheck.php");
-    //?
-
-
-
-
-
     require_once(__DIR__ . '/vendor/autoload.php');
     if (isset($_SESSION["loggedin"])) {
         if ($_SESSION["opperadmin"] == 1){
@@ -67,6 +56,8 @@
 
     $allCitygroups = [];
     $allCitygroups = Citygroup::getAllCitygroups();
+    $image = new Image();
+    $url = $image->getUrl()
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +67,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="assets/brand/tabicon.svg" style="height:40px" type="image/svg">
+    <link rel="icon" href="<?php echo $url."assets/brand/ppyo2h0le7ysvsembls6" ?>" style="height:40px" type="image/svg">
     <script src="JavaScript/carrousel.js" defer></script>
     <title>Copoll - Opper Admin</title>
 </head>
