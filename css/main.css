@@ -692,6 +692,14 @@ nav.projectnav ul li{
     border-radius: 4px;
     padding-left: 8px;
     padding-right: 8px;
+    height: 40px;
+    line-height: 40px;
+}
+.chatuser{
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 40px;
+    line-height: 40px;
 }
 .nametag-chat{
     display: grid;
@@ -699,7 +707,7 @@ nav.projectnav ul li{
 }
 .date-chat{
     padding-left: 12px;
-    padding-top: 5px;
+    line-height: 40px;
 }
 .messagecontent-chat{
     grid-column: 1/ span 2;
