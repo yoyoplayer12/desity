@@ -1,21 +1,24 @@
 <?php
     ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
+    $selectedid="";
     if(isset($_SESSION["loggedin"])) {
     }
     else{
         header("Location: ./login.php");
     }
-    $allusermessages = Message::getMessagesByUser($_SESSION['userid']);
     $allthinkerprojects = Thinker::getAllUserProjects($_SESSION['userid']);
     if (isset($_GET['id'])) {
+        //nog beveiligen
         $selectedid = $_GET['id'];
+        //nog beveiligen
     }
     elseif(isset($_GET['pid'])){
         $thinkersbyprojectid = Thinker::getAllThinkersByProject($_GET['pid']);
         foreach($thinkersbyprojectid as $thinker){
             if($_SESSION['userid'] == $thinker['user_id']){
                 $selectedid = $_GET['pid'];
+                $_SESSION['selectedid'] = $selectedid;
             }
             else{
             }
@@ -25,30 +28,6 @@
     }
     else{
     }
-    if(!empty($_POST)){
-        if(isset($_POST['send'])){
-            if(isset($_GET['id'])){
-                $message = new Message();
-                $message->setSenderId($_SESSION['userid']);
-                $message->setReceiverId($selectedid);
-                $message->setContent($_POST['text']);
-                $message->setMessage();
-                header("Location: ./chat.php?id=$selectedid");
-            }
-            elseif(isset($_GET['pid'])){
-                $message = new Message();
-                $message->setSenderId($_SESSION['userid']);
-                $message->setProjectId($selectedid);
-                $message->setContent($_POST['text']);
-                $message->setProjectMessage();
-                header("Location: ./chat.php?pid=$selectedid");
-            }
-            else{
-            }
-            
-        }
-    }
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,154 +62,102 @@
                 <p class="body-small contacttitle">Personal messages</p>
             </div>
         </div>
-        <div class="chatbox-chat">
 
-                    <!-- personal messages -->
 
-            <?php if(isset($_GET["id"]) && isset($selectedid)): ?>
-                <?php foreach($allusermessages as $message): ?>
-                    <?php $sender = User::getUsersById($message['sender_id']) ?>
-
-                        <!-- Your messages -->
-                        <?php if($message['sender_id'] == $_SESSION['userid'] && $message['receiver_id'] == $selectedid): ?>
-                            <div class="chatmessage-chat-me">
-                                <div class="pic-chat" style="background-image: url('<?php echo $sender['photo_url'] ?>');"></div>
-                                <div class="nametag-chat" style="margin-left: 16px;">
-                                    <?php if($sender['admin'] == 1): ?>
-                                        <p class="body-bold-Large adminchat" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                        <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                    <?php else: ?>
-                                        <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                        <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                    <?php endif; ?>
-                                    <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
-                                </div>
-                                
-                            </div>
-                        
-                        <!-- Other people's messages -->
-                        <?php elseif($message['receiver_id'] == $_SESSION['userid'] && $message['sender_id'] == $selectedid):?>
-                        <div class="chatmessage-chat-other">
-                            <div class="pic-chat" style="background-image: url('<?php echo $sender['photo_url'] ?>');"></div>
-                            <div class="nametag-chat" style="margin-left: 16px;">
-                                    <?php if($sender['admin'] == 1): ?>
-                                        <p class="body-bold-Large adminchat" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                        <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                    <?php else: ?>
-                                        <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                        <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                    <?php endif; ?>
-                                    <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
-                                </div>
-                        </div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-
-                                        <!-- group messages -->
-
-            <?php elseif(isset($_GET["pid"]) && isset($selectedid)): ?>
-                <?php $allgroupmessages = Message::getMessagesByProject($_GET['pid']);?>
-                <?php foreach($allgroupmessages as $message):?>
-                    <?php $sender = User::getUsersById($message['sender_id']) ?>
-                        <!-- Your messages -->
-                    <?php if($message['sender_id'] == $_SESSION['userid'] && $message['project_id'] == $selectedid): ?>
-                        <div class="chatmessage-chat-me">
-                            <div class="pic-chat" style="background-image: url('<?php echo $sender['photo_url'] ?>');"></div>
-                            <div class="nametag-chat" style="margin-left: 16px;">
-                                <?php if($sender['admin'] == 1): ?>
-                                <p class="body-bold-Large adminchat" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                <?php else: ?>
-                                    <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                    <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                <?php endif; ?>
-                                <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="<?php echo $message['id'] ?>"></p>
-                            </div>            
-                        </div>
-                        <!-- Other people's messages -->
-                        <?php elseif($message['project_id'] == $selectedid):?>
-                            <div class="chatmessage-chat-other">
-                                <div class="pic-chat" style="background-image: url('<?php echo $sender['photo_url'] ?>');"></div>
-                                <div class="nametag-chat" style="margin-left: 16px;">
-                                    <?php if($sender['admin'] == 1): ?>
-                                    <p class="body-bold-Large adminchat" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                    <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                    <?php else: ?>
-                                    <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
-                                    <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
-                                    <?php endif; ?>
-                                    <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="<?php echo $message['id'] ?>"></p>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-                <?php endforeach; ?>
-            <?php else: ?>
-                    <!-- no message -->
-            <?php endif; ?>
-        </div>
         
-        <div class="sendpart">
-            <?php if(isset($selectedid)): ?>
-                <form action="" method="post">
-                    <input type="text" name="text" class="send-chat" placeholder="Aa"></input>
-                    <input type="submit" value=">" name="send" class="send">
-                </form>
-            <?php endif; ?>
-        </div>
+        <?php if($selectedid == $_GET['pid'] || $selectedid == $_GET['id'] ): ?>
+            <div id="chat-container" class="chatbox-chat">
+                <div id="chat-messages"></div>
+            </div>
+            <div class="sendpart">
+                <?php if(isset($selectedid)):?>
+                    <form id="chat-form" action="" method="post">
+                        <input type="text" name="text" id="message-input" class="send-chat" placeholder="Aa"></input>
+                        <input type="submit" value="Send" name="send" class="send">
+                    </form>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+        <!-- <div id="user-list-container">
+            <h3>Connected Users</h3>
+            <ul id="user-list"></ul>
+        </div> -->
     </div>
 </body>
+
+
 <script>
-        $(document).ready(function() {
-        // Function to fetch and display the chat messages
-        function fetchChatMessages() {
-            $.ajax({
-                url: 'ajax/fetch_messages.action.php?mid=<?php echo $messageid ?>',
-                method: 'GET',
-                success: function(response) {
-                    $('#<?php echo $messageid ?>').html(response);
-                    console.log($('#<?php echo $messageid ?>').html(response));
-                }
-            });
-        }
+    function scrollToBottom() {
+        var chatMessages = document.getElementById('chat-container');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    $(document).ready(function() {
+    // Function to fetch and display the chat messages
+    function fetchChatMessages() {
+        pid = 1; //deze nog aanpassen
+        $.ajax({
+            url: 'ajax/fetch_messages.action.php?pid='+ pid,
+            method: 'GET',
+            success: function(response) {
+                $('#chat-messages').html(response);
+                scrollToBottom();
+            }
+        });
+    }
+    function fetchChatUsers() {
+        pid = 1; //deze nog aanpassen
+        $.ajax({
+            url: 'ajax/fetch_messages.action.php?pid='+ pid,
+            method: 'GET',
+            success: function(response) {
+                $('#chat-messages').html(response);
+            }
+        });
+    }
+    // Function to fetch and display the list of connected users
+    // function fetchUserList() {
+    //     $.ajax({
+    //         url: 'ajax/fetch_users.action.php',
+    //         method: 'GET',
+    //         success: function(response) {
+    //             $('#user-list').html(response);
+    //         }
+    //     });
+    // }
 
-        // Function to fetch and display the list of connected users
-        // function fetchUserList() {
-        //     $.ajax({
-        //         url: 'fetch_users.action.php',
-        //         method: 'GET',
-        //         success: function(response) {
-        //             $('#user-list').html(response);
-        //         }
-        //     });
-        // }
+    // Call the initial fetch functions
+    fetchChatMessages();
+    // fetchUserList();
 
-        // Call the initial fetch functions
+    // Handle form submission
+    $('#chat-form').submit(function(event) {
+        event.preventDefault();
+
+        var message = $('#message-input').val();
+
+//deze nog aanpassen
+
+        var pid = 1; 
+
+//deze nog aanpassen
+        $.ajax({
+            url: 'ajax/send_message.action.php',
+            method: 'POST',
+            data: { message: message, pid: pid },
+            success: function() {
+                $('#message-input').val('');
+                fetchChatMessages();
+                scrollToBottom();
+            }
+        });
+    });
+
+    // Periodically update the chat messages and user list
+    setInterval(function() {
         fetchChatMessages();
         // fetchUserList();
-
-        // Handle form submission
-        // $('#chat-form').submit(function(event) {
-        //     event.preventDefault();
-
-        //     var message = $('#message-input').val();
-
-        //     $.ajax({
-        //         url: 'send_message.action.php',
-        //         method: 'POST',
-        //         data: { message: message },
-        //         success: function() {
-        //             $('#message-input').val('');
-        //             fetchChatMessages();
-        //         }
-        //     });
-        // });
-
-        // Periodically update the chat messages and user list
-        setInterval(function() {
-            fetchChatMessages();
-            // fetchUserList();
-        }, 5000); // Adjust the interval as needed
-    });
+    }, 5000); // Adjust the interval as needed
+});
 
 </script>
 </html>
