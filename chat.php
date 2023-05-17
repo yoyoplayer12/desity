@@ -59,6 +59,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" href="assets/brand/tabicon.svg" style="height:40px" type="image/svg">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Dashboard - Chat</title>
 </head>
 <body>
@@ -102,7 +103,7 @@
                                     <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
                                     <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
                                 <?php endif; ?>
-                                <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="<?php echo $message['id'] ?>"><?php echo $message['content']?></p>
+                                <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
                             </div>
                             
                         </div>
@@ -119,7 +120,7 @@
                                     <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
                                     <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
                                 <?php endif; ?>
-                                <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="<?php echo $message['id'] ?>"><?php echo $message['content']?></p>
+                                <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
                             </div>
                     </div>
                     <?php endif; ?>
@@ -143,7 +144,7 @@
                                 <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
                                 <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
                             <?php endif; ?>
-                            <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="<?php echo $message['id'] ?>"><?php echo $message['content']?></p>
+                            <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
                         </div>            
                     </div>
                     <!-- Other people's messages -->
@@ -158,7 +159,7 @@
                                 <p class="body-bold-Large" style="margin: 0;"><?php echo $sender['firstname']." ".$sender['lastname'] ?></p>
                                 <p class="body-small charcoal date-chat"><?php echo " ".date('d M Y', strtotime($message['senddate']))." at ".date('H:i', strtotime($message['senddate'])) ?></p>
                                 <?php endif; ?>
-                                <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="<?php echo $message['id'] ?>"><?php echo $message['content']?></p>
+                                <p class="body-normal messagecontent-chat" style="margin-top: 8px; margin-bottom: 0;" id="chat-messages"></p>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -177,4 +178,58 @@
         </div>
     </div>
 </body>
+<script>
+        $(document).ready(function() {
+        // Function to fetch and display the chat messages
+        function fetchChatMessages() {
+            $.ajax({
+                url: 'ajax/fetch_messages.action.php',
+                method: 'GET',
+                success: function(response) {
+                    $('#chat-messages').html(response);
+                    console.log($('#chat-messages').html(response));
+                }
+            });
+        }
+
+        // Function to fetch and display the list of connected users
+        // function fetchUserList() {
+        //     $.ajax({
+        //         url: 'fetch_users.action.php',
+        //         method: 'GET',
+        //         success: function(response) {
+        //             $('#user-list').html(response);
+        //         }
+        //     });
+        // }
+
+        // Call the initial fetch functions
+        fetchChatMessages();
+        // fetchUserList();
+
+        // Handle form submission
+        // $('#chat-form').submit(function(event) {
+        //     event.preventDefault();
+
+        //     var message = $('#message-input').val();
+
+        //     $.ajax({
+        //         url: 'send_message.action.php',
+        //         method: 'POST',
+        //         data: { message: message },
+        //         success: function() {
+        //             $('#message-input').val('');
+        //             fetchChatMessages();
+        //         }
+        //     });
+        // });
+
+        // Periodically update the chat messages and user list
+        setInterval(function() {
+            fetchChatMessages();
+            // fetchUserList();
+        }, 5000); // Adjust the interval as needed
+    });
+
+    </script>
 </html>
