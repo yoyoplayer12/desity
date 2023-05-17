@@ -35,7 +35,7 @@
                 $image->upload("public", "profiles", "avatar");
                 $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
                 $randomstring = $image->getString();
-                $destination = "public/profiles/".$randomstring.$ext;
+                $destination = "public/profiles/".$randomstring.".".$ext;
                 $user->setProfileImage($destination);
                 $user->setUser();
                 session_destroy();

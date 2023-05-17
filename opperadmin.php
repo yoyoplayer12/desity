@@ -1,10 +1,21 @@
 <?php
     include_once(__DIR__ . "/bootstrap.php");
+
+
+
+
+    //?
     include_once(__DIR__ . "/loginCheck.php");
+    //?
+
+
+
+
+
     require_once(__DIR__ . '/vendor/autoload.php');
     if (isset($_SESSION["loggedin"])) {
         if ($_SESSION["opperadmin"] == 1){
-            $config = parse_ini_file("config/config.ini");
+
         }
         else{
             header("Location: ./dashboard.php");
@@ -36,12 +47,13 @@
                 $city = preg_replace('/\s+/', '-', $city);
                 $city = preg_replace('/[^A-Za-z0-9\-]/', '-', $city);
                 $newcity->setName($city);
+                //set image
                 $upload = new Image();
                 $upload->setup();
                 $upload->upload("assets", "cities", "citypic");
                 $randomstring = $upload->getString();
-
-                $destination = "assets/cities/".$randomstring.".jpg";
+                $ext = pathinfo($_FILES['citypic']['name'], PATHINFO_EXTENSION);
+                $destination = "assets/cities/".$randomstring.".".$ext;
                 // set in db
                 $newcity->setCityPic($destination);
                 $newcity->setCityGroupId($_POST['groupid']);               
