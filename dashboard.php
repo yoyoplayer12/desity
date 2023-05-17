@@ -1,5 +1,5 @@
 <?php
-    ini_set('display_errors', 1);
+    // ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
     if(isset($_SESSION["loggedin"])) {
         $allPollingProjects = Project::getAllGroupActivePollingProjects($_SESSION['citygroupid']);
@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="assets/brand/tabicon.svg" style="height:40px" type="image/svg">
+    <link rel="icon" href="<?php echo $url."assets/brand/ppyo2h0le7ysvsembls6" ?>" style="height:40px" type="image/svg">
     <title>Dashboard - Overview</title>
 </head>
 <body>
@@ -31,7 +31,7 @@
             <?php foreach($allProjects as $project): ?>
                 <?php $city = City::getCityById($project['city_id']); ?>
                 <div class="projectcard">
-                    <div class="projectcardimg" style="background-image: url(<?php echo $project['img-url']?>);"></div>
+                    <div class="projectcardimg" style="background-image: url(<?php echo $url.$project['img-url']?>);"></div>
                     <div class="projectcardinfo">
                         <h5 style="margin-bottom: 8px; margin-top:0" class="projectcard-title"><?php echo $project['title']?></h5>
                         <p class="body-xs"><?php echo $city['city']?></p>
@@ -52,7 +52,7 @@
                             <?php $poll = Poll::getPollbyProjectId($Pollingproject['id']);?>
 
                             <div class="pollcard">
-                                <div class="pollcardimg" style="background-image:url(<?php echo $Pollingproject['img-url'] ?>);"></div>
+                                <div class="pollcardimg" style="background-image:url(<?php echo $url.$Pollingproject['img-url'] ?>);"></div>
                                 <p class="body-medium-xl" id="pollcardtitle"><?php echo $poll['title'] ?></p>
                                 <p class="body-xs" id="polldates"><?php echo date('d M', strtotime($poll["startdate"])). " - ".date('d M', strtotime($poll["enddate"])) ?></p>
                             </div>

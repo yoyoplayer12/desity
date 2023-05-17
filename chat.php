@@ -1,5 +1,5 @@
 <?php
-    ini_set('display_errors', 1);
+    // ini_set('display_errors', 1);
     include_once(__DIR__ . "/bootstrap.php");
     if(isset($_SESSION["loggedin"])) {
     }
@@ -39,7 +39,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="assets/brand/tabicon.svg" style="height:40px" type="image/svg">
+    <link rel="icon" href="<?php echo $url."assets/brand/ppyo2h0le7ysvsembls6" ?>" style="height:40px" type="image/svg">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <title>Dashboard - Chat</title>
 </head>

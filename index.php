@@ -1,3 +1,8 @@
+<?php
+    include_once(__DIR__ . "/bootstrap.php");
+    $image = new Image();
+    $url = $image->getUrl();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="assets/brand/tabicon.svg" style="height:40px" type="image/svg">
+    <link rel="icon" href="<?php echo $url."assets/brand/ppyo2h0le7ysvsembls6" ?>" style="height:40px" type="image/svg">
     <title>Copoll</title>
 </head>
 <body>
