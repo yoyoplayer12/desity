@@ -208,20 +208,31 @@ nav.dashnav{
 }
 nav.dashnav .toppart{
     margin-top: 8px;
+    display: grid;
+    grid-template-columns: 24px auto;
+    grid-template-rows: auto 34px auto auto auto ;
+    column-gap: 12px;
+    margin-left: 20px;
 }
-nav.dashnav div li a{
+nav.dashnav .toppart .menuitems{
+    height: 45px;
+    line-height: 45px;
+}
+nav.dashnav div a{
     color: var(--neutral-whitesmoke);
     font-family: MuseoSans-300, Arial, Helvetica, sans-serif;
     font-size: 16px;
     line-height: 150%;
 }
-nav.dashnav div li{
-    margin-left: 16px;
-    margin-bottom: 16px;
-}
 nav.dashnav div.bottompart{
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 24px auto;
+    margin-left: 20px;
+    row-gap: 16px;
+    column-gap: 12px;
 }
 .active, .btn:hover {
     color: var(--primary-green);
@@ -1142,4 +1153,55 @@ a:link, a:visited, a:active{
     grid-template-rows: 24px 24px;
     column-gap: 8px;
     row-gap: 16px;
+}
+.dashnavgrid-top{
+    display: grid;
+    grid-template-rows: auto auto;
+}
+.twocolumns{
+    grid-column: span 2;
+}
+.dashboardico{
+    background-image: url('https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/f4afxi6jru7w2kf52ko6.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.projectico{
+    background-image: url('https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/xmnwys99b1izzwob23g7.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.scheduleico{
+    background-image: url('https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/meqzqfdwvs09du1tunxt.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.chatico{
+    background-image: url('https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/xhcsz6vpcidclfgi2z71.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.peopleico{
+    background-image: url('https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/aynh8wote9rku9x0hyw4.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.subprojects{
+    grid-column: span 2;
+    margin-left: 5px;
+}
+.notico{
+    background-image: url('https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/nh76gcu7nkdebuvqr7f6.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.accico{
+    background-image: url('https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/ytnqgxhfqqn9urduzbrr.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.setico{
+    background-image: url('https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/t8d9incitzb1kspfidey.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
