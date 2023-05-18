@@ -16,7 +16,7 @@
             $dob = $_SESSION['dob-login'];
             $citygroupid = $_SESSION['citygroupid'];
             $options = [
-                'cost' => 15,
+                'cost' => 10,
             ];
             $password = password_hash($_SESSION['password-login'], PASSWORD_DEFAULT, $options);
             $user->setEmail($email);
