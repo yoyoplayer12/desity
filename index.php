@@ -18,7 +18,7 @@
     <?php include_once(__DIR__ . "/navs/nav.php"); ?>
     <div class="grid-container-index">
         <div class="grid-item-index">
-            <h1 class="slogan">Your voice matters, let it be heard</h1>
+            <h1 class="slogan">Your voice matters, <br> be heard</h1>
             <p style="width: 640px;" class="body-large">copoll is a collaborative platform that empowers municipalities to involve their citizens in decision-making, streamline communication, and drive meaningful change in their communities.</p>
             <div class="index-actionbuttons">
                 <a href="register.php" class="getstarted">GET STARTED</a>
