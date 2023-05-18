@@ -939,12 +939,19 @@ nav.projectnav ul li{
     margin-bottom: 16px;
     margin-top: 16px;
 }
-.pricing-plans-container ul{
-    list-style-image: url(https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/dscc77ln7slxbxi8wxed.png);
-    list-style-position: inside;
+.pricing-plans-container .pricingplans{
+    display: grid;
+    grid-template-columns: 32px auto;
+    grid-template-rows: auto auto auto auto auto auto;
+    column-gap: 8px;
+    row-gap: 16px;
 }
+.pricing-plans-container .pricingplans div{
+    background-image: url('https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/urmwgdhf8j8ehimvyvge.png');
+    height: 32px;
+}
+
 .pricing-plans-container ul li{
-    margin-bottom: 20px;
     height: 32px;
     line-height: 32px;
 }
@@ -1021,53 +1028,6 @@ footer a.footer-getstarted{
 .footercontainer div p a{
     color: var(--neutral-night);
 }
-
-
-
-
-
-
-
-.feedpost{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 50vw;
-    margin-left: 5vw;
-    color: var(--neutral-night);
-    background-color: var(--neutral-whitesmoke);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    padding-bottom: 40px;
-    padding-top: 20px;
-}
-.feed{
-    width: 60vw;
-    margin-left: 20vw;
-    background-color: var(--neutral-frenchgray);
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-.post{
-    width: 40vw;
-    margin-left: 5vw;
-}
-.comment{
-    width: 40vw;
-    margin-left: 5vw;
-    background-color: var(--neutral-frenchgray);
-    color: var(--neutral-night);
-    margin-top: 50px;
-}
-.commentheader{
-    margin-bottom: 10px;
-    font-size: 30px;
-}
-.commentname{
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
 ul{
     list-style-type: none;
     padding: 0;
@@ -1076,127 +1036,86 @@ ul{
 a:link, a:visited, a:active{
     text-decoration: none;
 }
-.newpost{
-    display: flex;
-    justify-content: center;
-    width: 50vw;
-    margin-left: 5vw;
-    color: var(--neutral-night);
-    background-color: var(--neutral-whitesmoke);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    padding-bottom: 40px;
-    padding-top: 20px;
+.grid-container-contact{
+    display: grid;
+    grid-template-rows: auto auto;
+    width: 80vw;
+    margin-left: 10vw;
+    margin-bottom: 188px;
 }
-.newpost input{
-    width: 100%;
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-    margin-bottom: 10px;
-}
-.fp-place{
+.contact-head-container{
+    display: grid;
+    grid-template-rows: auto auto;
     text-align: center;
-    font-size: 50px;
-    color: var(--black);
+    margin-bottom: 56px;
+}
+.contact-head-container p{
+    margin: 0;
+}
+.contact-head-container h1{
+    margin: 0;
+    margin-bottom: 24px;
+}
+.contact-options{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 32px;
+    height: 405px;
+}
+.contact-options-item{
+    width: 640px;
+    height: 405px;
+    border: 1px solid var(--neutral-night);
+    border-radius: 8px;
+}
+.contact-reachout-img{
+    width: 641px;
+    height: 200.3125px;
+    background-image: url("https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/images/nzxpvbrnu7d1fnxfknyt.png");
+    background-size: cover;
+    margin-left: -2px;
+    margin-top: -2px;
+}
+.contact-joinus-img{
+    width: 641px;
+    height: 200.3125px;
+    background-image: url("https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/images/sni1n0lakv9gfzb5uxvl.png");
+    background-size: cover;
+    margin-left: -2px;
+    margin-top: -2px;
+}
+.contact-options-item h3{
+    margin: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 16px;
+}
+.contact-options-item p{
+    margin: 0;
+    margin-left: 16px;
     margin-bottom: 20px;
-    margin-top: 50px;
 }
-.fp-place::first-letter{
-    text-transform: capitalize;
+.contact-options-item ul{
+    margin: 0;
+    margin-left: 16px;
 }
-.newposttitle{
-    text-align: center;
-    font-size: 30px;
-    color: var(--neutral-night);
-    margin-bottom: 20px;
-    margin-top: 50px;
-}
-.noposts{
-    text-align: center;
-    font-size: 30px;
-    color: var(--neutral-night);
-    margin-bottom: 20px;
-    margin-top: 50px;
-}
-.account-avatar{
-    width: 300px;
-    height: auto;
-}
-.postpic{
-    width: 40vw;
-}
-a#like{
-    color: var(--primary-green);
-}
-.nocomments{
-    text-align: center;
-    font-size: 20px;
-    color: var(--neutral-night);
-    margin-bottom: 20px;
-    margin-top: 50px;
-}
-.poll{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 40vw;
-    margin-left: 5vw;
-    color: var(--neutral-night);
-    border-radius: 10px;
-}
-.poll-options{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 40vw;
-    color: var(--neutral-night);
-    border-radius: 10px;
-    padding-top: 20px;
-}
-.polltitle{
-    text-align: center;
-    font-size: 30px;
-    color: var(--neutral-night);
-    margin-bottom: 20px;
-    margin-top: 50px;
-}
-.pollvotes{
-    text-align: center;
-    font-size: 20px;
+.contact-options-item ul li a{
     color: var(--neutral-night);
 }
-
-.residenttitle{
-    text-align: center;
-    font-size: 30px;
+.contact-options-item ul li a:hover{
     color: var(--neutral-night);
-    margin-bottom: 20px;
-    margin-top: 50px;
+    text-decoration: underline;
 }
-.resident{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 40vw;
-    margin-left: 30vw;
-    padding-left: 5vw;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: var(--neutral-night);
-    background-color: var(--neutral-frenchgray);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    font-size: 10px;
+.phonelist{
+    background-image: url('https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/wrndm73efqzvygbtao1c.png');
 }
-.mainpolltitle{
-    text-align: center;
-    font-size: 30px;
-    color: var(--neutral-night);
-    margin-bottom: 20px;
-    margin-top: 50px;
+.maillist{
+    background-image: url('https://res.cloudinary.com/de4kuz3ws/image/upload/v1/assets/icons/om7dg3263bgh8by2ye2m.png');
 }
-.resident-avatar{
-    width: 100px;
-    height: auto;
+.contactlist{
+    display: grid;
+    grid-template-columns: 24px auto;
+    grid-template-rows: 24px 24px;
+    column-gap: 8px;
+    row-gap: 16px;
 }
