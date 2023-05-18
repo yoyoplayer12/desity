@@ -144,7 +144,6 @@ p::first-letter, h1::first-letter, h2::first-letter, h3::first-letter, h4::first
     padding: 10px;
     width: 80vw;
     margin-left: 10vw;
-    margin-right: 10vw;
     grid-template-rows: 80vh auto;
     margin-bottom: 104px;
 }
@@ -870,7 +869,6 @@ nav.projectnav ul li{
     grid-template-columns: 416px 416px 416px;
     column-gap: 32px;
     width: 80vw;
-    margin-left: 5vw;
     grid-template-rows: auto auto auto;
 }
 .pricing-container-item{
