@@ -22,7 +22,7 @@
             <p style="width: 640px;" class="body-large">copoll is a collaborative platform that empowers municipalities to involve their citizens in decision-making, streamline communication, and drive meaningful change in their communities.</p>
             <div class="index-actionbuttons">
                 <a href="register.php" class="getstarted">GET STARTED</a>
-                <a href="#" class="contactus">CONTACT US</a>
+                <a href="contact.php" class="contactus">CONTACT US</a>
             </div>
         </div>
         <div class="pc-container">
@@ -61,12 +61,18 @@
                     <h5>RESIDENTS</h5>
                     <h3>Free</h3>
                     <p class="body-normal">Lorem ipsum dolor sit amet consectetur. Adipiscing id praesent.</p>
-                    <ul class="body-normal">
+                    <ul class="body-normal pricingplans">
+                        <div></div>
                         <li>Browse and join projects</li>
+                        <div></div>
                         <li>Collaborate with other residents</li>
+                        <div></div>
                         <li>Vote and participate in polls</li>
+                        <div></div>
                         <li>Contribute to discussions</li>
+                        <div></div>
                         <li>Stay informed about project updates</li>
+                        <div></div>
                         <li>Engage with the municipality and citizens</li>
                     </ul>
                     <div style="height: 149px"></div>
@@ -78,16 +84,22 @@
                     <h5>STANDARD MUNICIPALITY</h5>
                     <h3>Variable</h3>
                     <p class="body-normal">Lorem ipsum dolor sit amet consectetur. Adipiscing id praesent.</p>
-                    <ul class="body-normal">
+                    <ul class="body-normal pricingplans">
+                        <div></div>
                         <li>Create and manage projects</li>
+                        <div></div>
                         <li>Launch and manage polls</li>
+                        <div></div>
                         <li>Access analytics and reporting</li>
+                        <div></div>
                         <li>Engage with your residents</li>
+                        <div></div>
                         <li>Invite members to your team</li>
+                        <div></div>
                         <li>Assign roles to your team members</li>
                     </ul>
                     <div style="height: 149px"></div>
-                    <a href="#" class="filled-pricebutton">CONTACT US</a>
+                    <a href="mailto:info@copoll.live?subject=Joining%20Copoll%20as%20a%20standard%20municipality&body=Give%20us%20any%20usefull%20info%20about%20your%20city.%20(Name,%20mayor,%20population%20count,...)" class="filled-pricebutton">CONTACT US</a>
                 </div>
             </div>
             <div class="pricing-container-item price">
@@ -95,15 +107,20 @@
                     <h5>PREMIUM MUNICIPALITY</h5>
                     <h3>Variable</h3>
                     <p class="body-normal">Lorem ipsum dolor sit amet consectetur. Adipiscing id praesent.</p>
-                    <ul class="body-normal">
+                    <ul class="body-normal pricingplans">
+                        <div></div>
                         <li>Everything from the standard plan</li>
+                        <div></div>
                         <li>Priority customer support</li>
+                        <div></div>
                         <li>Increased project capacity</li>
+                        <div></div>
                         <li>Extended File Storage</li>
+                        <div></div>
                         <li>Training and Onboarding</li>
                     </ul>
-                    <div style="height: 201px"></div>
-                    <a href="#" class="filled-pricebutton">CONTACT US</a>
+                    <div style="height: 181px"></div>
+                    <a href="mailto:info@copoll.live?subject=Joining%20Copoll%20as%20a%20premium%20municipality&body=Give%20us%20any%20usefull%20info%20about%20your%20city.%20(Name,%20mayor,%20population%20count,...)" class="filled-pricebutton">CONTACT US</a>
                 </div>
             </div>
         </div>
