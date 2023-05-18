@@ -70,7 +70,7 @@
                         <li>Engage with the municipality and citizens</li>
                     </ul>
                     <div style="height: 149px"></div>
-                    <a href="#">GET STARTED</a>
+                    <a href="register.php">GET STARTED</a>
                 </div>
             </div>
             <div class="pricing-container-item price">
