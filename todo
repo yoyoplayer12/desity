@@ -58,3 +58,11 @@ making new city:
 
 
 fix login ==> only clicking on next works
+
+
+
+
+chat:
+- alsk scroll en er zijn geen nieuwe berichten => dont refresh
+- geen empty messages toelaten
+- deleting messages
