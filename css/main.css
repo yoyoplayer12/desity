@@ -393,13 +393,15 @@ select{
     height: 100vh;
     padding-left: 304px;
     padding-right: 304px;
-    padding-top: 40px;
+    padding-top: 70px;
 }
 .dashcontent .projects{
     background-color: rgba(255, 255, 255, 0);
     width: 38.18vw;
     grid-row-start: 1;
     grid-row-end: 3;
+    margin-top: 15px;
+    overflow: auto;
 }
 .dashcontent .rightdiv .ongoing-polls{
     background-color: rgba(255, 255, 255, 0);
@@ -411,8 +413,9 @@ select{
     background-color: rgba(255, 255, 255, 0);
     width: 21.81vw;
     margin-bottom: 112px;
-    height: 412px;
+    height: 427px;
     overflow: auto;
+    margin-top: 40px;
 }
 .ongoingpolls-container{
     height: 320px;
@@ -426,6 +429,28 @@ select{
     grid-template-rows: 3fr 4fr;
     row-gap: 56px;
     right: 304px;
+    margin-top: 15px;
+}
+.projectstitle-dash{
+    position: fixed;
+    top: 0px;
+    padding-top: 36px;
+    padding-bottom: 4px;
+    width: 38.18vw;
+    background-color: var(--neutral-whitesmoke);
+}
+.ongoingpolls-dash{
+    position: fixed;
+    top: 0px;
+    padding-top: 36px;
+    padding-bottom: 4px;
+    width: 38.18vw;
+    background-color: var(--neutral-whitesmoke);
+}
+.announcements-dash{
+    position: fixed;
+    width: 38.18vw;
+    background-color: var(--neutral-whitesmoke);
 }
 .projectcard{
     border: 1px solid var(--secondary-charcoal);
@@ -491,7 +516,6 @@ a.read-more-projectcard{
     border-radius: 2px;
 }
 div.readmore-div-projectcard{
-    position: absolute;
     margin-top: 20px;
 }
 .body-medium-xl{

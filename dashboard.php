@@ -27,7 +27,7 @@
     <?php include_once(__DIR__ . "/navs/dashnav.php"); ?>
     <div class="dashcontent">
         <div class="projects">
-            <h4>Open projects</h4>
+            <h4 class="projectstitle-dash">Open projects</h4>
             <?php foreach($allProjects as $project): ?>
                 <?php $city = City::getCityById($project['city_id']); ?>
                 <div class="projectcard">
@@ -44,7 +44,7 @@
         <div class="rightdiv">
             <div class="ongoingpolls-container">
                 <div class="ongoing-polls">
-                    <h4>Ongoing polls</h4>
+                    <h4 class="ongoingpolls-dash">Ongoing polls</h4>
                     <?php if($allPollingProjects == []):?>
                         <p class="body-medium-xl" style="text-align: center; margin-top: 50%">There are no public pollings right now!</p>
                     <?php else:?>
@@ -61,8 +61,8 @@
                 </div>
             </div>
             <div class="recentannouncements-container">
+                <h4 class="announcements-dash">Project announcements</h4>
                 <div class="recent-announcements">
-                    <h4>Project announcements</h4>
                     <?php foreach($allAnnouncements as $announcement): ?>
                         <?php $city = City::getCityById($announcement['city_id']); ?>
                         <div class="announcementcard">
