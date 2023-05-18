@@ -28,18 +28,22 @@
     <div class="dashcontent">
         <div class="projects">
             <h4 class="projectstitle-dash">Open projects</h4>
-            <?php foreach($allProjects as $project): ?>
-                <?php $city = City::getCityById($project['city_id']); ?>
-                <div class="projectcard">
-                    <div class="projectcardimg" style="background-image: url(<?php echo $url.$project['img-url']?>);"></div>
-                    <div class="projectcardinfo">
-                        <h5 style="margin-bottom: 8px; margin-top:0" class="projectcard-title"><?php echo $project['title']?></h5>
-                        <p class="body-xs"><?php echo $city['city']?></p>
-                        <p class="body-normal" id="projectcardsummary"><?php echo $project['summary']?></p>
-                        <div class="readmore-div-projectcard"><a href="#" class="read-more-projectcard">READ MORE</a></div>
+            <?php if($allProjects == []): ?>
+                <p class="body-medium-xl" style="text-align: center; margin-top: 50%">There are no projects in your city right now!</p>
+            <?php else: ?>
+                <?php foreach($allProjects as $project): ?>
+                    <?php $city = City::getCityById($project['city_id']); ?>
+                    <div class="projectcard">
+                        <div class="projectcardimg" style="background-image: url(<?php echo $url.$project['img-url']?>);"></div>
+                        <div class="projectcardinfo">
+                            <h5 style="margin-bottom: 8px; margin-top:0" class="projectcard-title"><?php echo $project['title']?></h5>
+                            <p class="body-xs"><?php echo $city['city']?></p>
+                            <p class="body-normal" id="projectcardsummary"><?php echo $project['summary']?></p>
+                            <div class="readmore-div-projectcard"><a href="#" class="read-more-projectcard">READ MORE</a></div>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
         <div class="rightdiv">
             <div class="ongoingpolls-container">

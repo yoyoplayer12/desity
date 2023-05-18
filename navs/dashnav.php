@@ -1,5 +1,11 @@
 <?php
     $alluserprojects = Thinker::getAllUserProjects($_SESSION['userid']);
+    if($alluserprojects == []){
+        $display = "display: none;";
+    }
+    else{
+        $display = "";
+    }
     $image = new Image();
     $url = $image->getUrl();
 ?>
@@ -9,9 +15,9 @@
         <div class="toppart">
             <div class="dashboardico"></div>
             <a href="dashboard.php" class="btn menuitems">Dashboard</a>
-            <div class="projectico menuitems"></div>
+            <div class="projectico"></div>
             <a href="projects.php" class="btn menuitems">Projects</a>
-            <div class="subprojects">
+            <div class="subprojects" style="<?php echo $display?>">
                 <?php foreach($alluserprojects as $AllProjects):?>
                     <?php $allContributingProjects = Project::getIdActiveProject($AllProjects['project_id']); ?>
                     <ul>
