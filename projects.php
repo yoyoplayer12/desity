@@ -13,8 +13,19 @@
     }
     else{
         $alluserprojects = Thinker::getAllUserProjects($_SESSION['userid']);
-        $allContributingProjects = Project::getIdActiveProject($alluserprojects[0]['project_id']);
-        $id = $allContributingProjects['id'];
+        if($alluserprojects == []){
+            header("Location: ./dashboard.php");
+        }
+        else{
+            $allContributingProjects = Project::getIdActiveProject($alluserprojects[0]['project_id']);
+            if($allContributingProjects == []){
+                header("Location: ./dashboard.php");
+            }
+            else{
+                $id = $allContributingProjects['id'];
+            }
+        }
+        
     }
     $project = Project::getProjectById($id);
     $allAnnouncements = Announcement::getAllProjectAnnouncements($id);
