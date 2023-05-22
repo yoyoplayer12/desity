@@ -4,7 +4,7 @@
 ?>
 <nav class="sitenav">
     <a href="index.php"><img class="navlogo" src="<?php echo $url."assets/brand/y1uiedctgpxpgbl85xcv.svg" ?>" alt="Copoll logo" style="height: 48px;"></a>
-    <ul>
+    <ul class="a">
         <li><a href="index.php#about">ABOUT</a></li>
         <li><a href="index.php#pricing">PRICING</a></li>
         <li><a href="contact.php">CONTACT</a></li>
