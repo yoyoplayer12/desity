@@ -19,7 +19,7 @@
     <div class="grid-container-index">
         <div class="grid-item-index">
             <h1 class="slogan">Your voice matters, <br> be heard</h1>
-            <p style="width: 640px;" class="body-large">copoll is a collaborative platform that empowers municipalities to involve their citizens in decision-making, streamline communication, and drive meaningful change in their communities.</p>
+            <p class="body-large slogantext">copoll is a collaborative platform that empowers municipalities to involve their citizens in decision-making, streamline communication, and drive meaningful change in their communities.</p>
             <div class="index-actionbuttons">
                 <a href="register.php" class="getstarted">GET STARTED</a>
                 <a href="contact.php" class="contactus">CONTACT US</a>
@@ -39,6 +39,7 @@
                     <img src="<?php echo $url."assets/icons/on4amjs9bhnng1lsowdb.png" ?>" alt="placeholder">
                     <h3>Join Projects</h3>
                     <p class="body-normal">Discover a diverse range of projects in your community and join forces with like-minded individuals to contribute your skills, knowledge, and passion. Together, you can create meaningful impact and shape the future of your municipality.</p>
+                    <div class="pricewhitespace"></div>
                 </div>
             </div>
             <div class="pricing-container-item info">
@@ -46,6 +47,7 @@
                     <img src="<?php echo $url."assets/icons/gdeac942hvs2ppp0zokg.png" ?>" alt="placeholder">
                     <h3>Collaborate</h3>
                     <p class="body-normal">Collaborate with fellow citizens and the municipality, bridging the gap between community and government. Share ideas, exchange perspectives, and work together towards common goals, fostering a culture of collaboration and co-creation.</p>
+                    <div class="pricewhitespace"></div>
                 </div>
             </div>
             <div class="pricing-container-item info">
@@ -53,6 +55,7 @@
                     <img src="<?php echo $url."assets/icons/w48kxypoldxniyuhwk6n.png" ?>" alt="placeholder">
                     <h3>Make a Difference</h3>
                     <p class="body-normal">Be the catalyst for change in your town. Your voice matters, and by actively participating in projects and initiatives, you have the power to make a difference. Join us in creating positive transformations and building a thriving community for all.</p>
+                    <div class="pricewhitespace"></div>
                 </div>
             </div>
             <div class="pricing-container-title"><h2 id="pricing">Pricing plans</h2></div>
@@ -75,7 +78,6 @@
                         <div></div>
                         <li>Engage with the municipality and citizens</li>
                     </ul>
-                    <div style="height: 149px"></div>
                     <a href="register.php">GET STARTED</a>
                 </div>
             </div>
@@ -98,7 +100,6 @@
                         <div></div>
                         <li>Assign roles to your team members</li>
                     </ul>
-                    <div style="height: 149px"></div>
                     <a href="mailto:info@copoll.live?subject=Joining%20Copoll%20as%20a%20standard%20municipality&body=Give%20us%20any%20usefull%20info%20about%20your%20city.%20(Name,%20mayor,%20population%20count,...)" class="filled-pricebutton">CONTACT US</a>
                 </div>
             </div>
@@ -118,8 +119,9 @@
                         <li>Extended File Storage</li>
                         <div></div>
                         <li>Training and Onboarding</li>
+                        <div style="display: none;"></div>
+                        <li style="height: 32px;"></li>
                     </ul>
-                    <div style="height: 181px"></div>
                     <a href="mailto:info@copoll.live?subject=Joining%20Copoll%20as%20a%20premium%20municipality&body=Give%20us%20any%20usefull%20info%20about%20your%20city.%20(Name,%20mayor,%20population%20count,...)" class="filled-pricebutton">CONTACT US</a>
                 </div>
             </div>
