@@ -96,7 +96,13 @@
                 <?php else: ?>
                     <ol>
                         <?php foreach($allcities as $city): ?>
-                            <li><?php echo $city['city']." (".date('d M Y', strtotime($city['startdate'])).")" ?></li>
+                        <?php $allcityusers = User::getUsersByCityId($city['id']); ?>
+                            <li><?php echo $city['city']." (".date('d M Y', strtotime($city['startdate'])).")" ?></li><p>Users:</p>
+                            <ol style="margin-bottom: 20px;">
+                                <?php foreach($allcityusers as $cityuser): ?>
+                                    <li><?php echo $cityuser['firstname']." ".$cityuser['lastname']." - reports: ".$cityuser['reportcount']." - ".$cityuser["email"] ?></li>
+                                <?php endforeach; ?>
+                            </ol>
                         <?php endforeach; ?>
                     </ol>
                 <?php endif; ?>

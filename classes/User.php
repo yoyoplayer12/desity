@@ -114,4 +114,12 @@
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    public static function getUsersByCityId($cityId){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM users WHERE city_id = :cityId AND active=1 AND banned=0 AND deleted=0");
+        $statement->bindValue(":cityId", $cityId);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
