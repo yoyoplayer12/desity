@@ -867,7 +867,7 @@ nav.projectnav ul li{
   
 .computer-wrapper {
     position: absolute;
-    top: -32px;
+    top: 0px;
     right: 0;
     height: 819px; /* Adjust height as needed */
     width: 1024px; /* Adjust width as needed */
@@ -875,7 +875,7 @@ nav.projectnav ul li{
 .computer {
     position: absolute;
     left: 7vw;
-    top: -32px;
+    top: 0px;
     width: 50vw;
     height: auto;
 }
